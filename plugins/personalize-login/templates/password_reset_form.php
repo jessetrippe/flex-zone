@@ -17,18 +17,17 @@
 
 		<p>
 			<label for="pass1"><?php _e( 'New password', 'personalize-login' ) ?></label>
-			<input type="password" name="pass1" id="pass1" class="input" size="20" value="" autocomplete="off" />
+			<input type="password" name="pass1" id="pass1" class="w-100 border border-silver py-1 px-2" size="20" value="" autocomplete="off" />
 		</p>
 		<p>
 			<label for="pass2"><?php _e( 'Repeat new password', 'personalize-login' ) ?></label>
-			<input type="password" name="pass2" id="pass2" class="input" size="20" value="" autocomplete="off" />
+			<input type="password" name="pass2" id="pass2" class="w-100 border border-silver py-1 px-2" size="20" value="" autocomplete="off" />
 		</p>
 
 		<p class="description"><?php echo wp_get_password_hint(); ?></p>
 
 		<p class="resetpass-submit">
-			<input type="submit" name="submit" id="resetpass-button"
-			       class="button" value="<?php _e( 'Reset Password', 'personalize-login' ); ?>" />
+			<input type="submit" name="submit" id="resetpass-button" class="btn" value="<?php _e( 'Reset Password', 'personalize-login' ); ?>" />
 		</p>
 	</form>
 </div>

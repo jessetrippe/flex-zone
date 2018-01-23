@@ -62,7 +62,7 @@
 			<label><input name="rememberme" type="checkbox" id="rememberme" value="forever"> Remember Me</label>
 		</p>
 		<p>
-			<input class="bg-teal white w-100 p-2" type="submit" name="wp-submit" id="wp-submit" value="Sign In">
+			<input class="btn btn-block" type="submit" name="wp-submit" id="wp-submit" value="Sign In">
 			<input type="hidden" name="redirect_to" value="http://localhost:8888/">
 		</p>
 	</form>

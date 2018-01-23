@@ -23,12 +23,11 @@
 	<form id="lostpasswordform" action="<?php echo wp_lostpassword_url(); ?>" method="post">
 		<p class="form-row">
 			<label for="user_login"><?php _e( 'Email', 'personalize-login' ); ?>
-			<input type="text" name="user_login" id="user_login">
+			<input class="w-100 border border-silver py-1 px-2" type="text" name="user_login" id="user_login">
 		</p>
 
 		<p class="lostpassword-submit">
-			<input type="submit" name="submit" class="lostpassword-button"
-			       value="<?php _e( 'Reset Password', 'personalize-login' ); ?>"/>
+			<input class="w-100 border border-silver py-1 px-2" type="submit" name="submit" class="lostpassword-button" value="Reset Password"/>
 		</p>
 	</form>
 </div>
