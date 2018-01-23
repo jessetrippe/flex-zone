@@ -619,22 +619,37 @@ button.is-set:before,
   position: relative;
 }
 
-.cat-item-2 a, .cat-item-9 a { background-image: url('/wp-content/themes/lifting/img/bg-img-01.jpg'); }
-.cat-item-3 a, .cat-item-10 a { background-image: url('/wp-content/themes/lifting/img/bg-img-02.jpg'); }
-.cat-item-4 a, .cat-item-11 a { background-image: url('/wp-content/themes/lifting/img/bg-img-04.jpg'); }
-.cat-item-5 a, .cat-item-12 a { background-image: url('/wp-content/themes/lifting/img/bg-img-09.jpg'); }
-.cat-item-6 a, .cat-item-13 a { background-image: url('/wp-content/themes/lifting/img/bg-img-06.jpg'); }
-.cat-item-7 a, .cat-item-14 a { background-image: url('/wp-content/themes/lifting/img/bg-img-07.jpg'); }
-.cat-item-8 a, .cat-item-15 a { background-image: url('/wp-content/themes/lifting/img/bg-img-08.jpg'); }
-.cat-item-9 a, .cat-item-16 a { background-image: url('/wp-content/themes/lifting/img/bg-img-05.jpg'); }
+.cat-item-1 a { background-image: url('/wp-content/themes/lifting/img/bg-img-01.jpg'); }
+.cat-item-2 a { background-image: url('/wp-content/themes/lifting/img/bg-img-01.jpg'); }
+.cat-item-3 a { background-image: url('/wp-content/themes/lifting/img/bg-img-01.jpg'); }
+.cat-item-4 a { background-image: url('/wp-content/themes/lifting/img/bg-img-01.jpg'); }
+.cat-item-5 a { background-image: url('/wp-content/themes/lifting/img/bg-img-01.jpg'); }
+.cat-item-6 a { background-image: url('/wp-content/themes/lifting/img/bg-img-01.jpg'); }
+.cat-item-7 a { background-image: url('/wp-content/themes/lifting/img/bg-img-01.jpg'); }
+.cat-item-8 a { background-image: url('/wp-content/themes/lifting/img/bg-img-01.jpg'); }
+.cat-item-9 a { background-image: url('/wp-content/themes/lifting/img/bg-img-01.jpg'); }
+.cat-item-10 a { background-image: url('/wp-content/themes/lifting/img/bg-img-02.jpg'); }
+.cat-item-11 a { background-image: url('/wp-content/themes/lifting/img/bg-img-04.jpg'); }
+.cat-item-12 a { background-image: url('/wp-content/themes/lifting/img/bg-img-09.jpg'); }
+.cat-item-13 a { background-image: url('/wp-content/themes/lifting/img/bg-img-06.jpg'); }
+.cat-item-14 a { background-image: url('/wp-content/themes/lifting/img/bg-img-07.jpg'); }
+.cat-item-15 a { background-image: url('/wp-content/themes/lifting/img/bg-img-08.jpg'); }
+.cat-item-16 a { background-image: url('/wp-content/themes/lifting/img/bg-img-05.jpg'); }
+.cat-item-17 a { background-image: url('/wp-content/themes/lifting/img/bg-img-05.jpg'); }
 .cat-item-18 a { background-image: url('/wp-content/themes/lifting/img/bg-img-03.jpg'); }
+.cat-item-19 a { background-image: url('/wp-content/themes/lifting/img/bg-img-03.jpg'); }
+.cat-item-20 a { background-image: url('/wp-content/themes/lifting/img/bg-img-03.jpg'); }
 .cat-item-21 a { background-image: url('/wp-content/themes/lifting/img/bg-img-05.jpg'); }
-.cat-item-19 a { background-image: url('/wp-content/themes/lifting/img/bg-img-10.jpg'); }
 .cat-item-22 a { background-image: url('/wp-content/themes/lifting/img/bg-img-07.jpg'); }
-.cat-item-20 a { background-image: url('/wp-content/themes/lifting/img/bg-img-06.jpg'); }
+.cat-item-23 a { background-image: url('/wp-content/themes/lifting/img/bg-img-07.jpg'); }
 .cat-item-24 a { background-image: url('/wp-content/themes/lifting/img/bg-img-05.jpg'); }
 .cat-item-25 a { background-image: url('/wp-content/themes/lifting/img/bg-img-06.jpg'); }
-.cat-item-23 a { background-image: url('/wp-content/themes/lifting/img/bg-img-05.jpg'); }
+.cat-item-26 a { background-image: url('/wp-content/themes/lifting/img/bg-img-06.jpg'); }
+.cat-item-27 a { background-image: url('/wp-content/themes/lifting/img/bg-img-06.jpg'); }
+.cat-item-28 a { background-image: url('/wp-content/themes/lifting/img/bg-img-06.jpg'); }
+.cat-item-29 a { background-image: url('/wp-content/themes/lifting/img/bg-img-06.jpg'); }
+.cat-item-30 a { background-image: url('/wp-content/themes/lifting/img/bg-img-06.jpg'); }
+.cat-item-31 a { background-image: url('/wp-content/themes/lifting/img/bg-img-06.jpg'); }
 
 .exercises > .modal {
   flex-direction: column;
