@@ -1,12 +1,6 @@
 
-plugins/wordpress-importer/languages/wordpress-importer.pot
-
-plugins/wordpress-importer/parsers.php
-
-plugins/wordpress-importer/readme.txt
-
-plugins/wordpress-importer/wordpress-importer.php
-
-plugins/wordpress-importer/wordpress-importer.php
+plugins/wordpress-importer/**.*
 
 themes/cdn-lifting-assets/**.*
+
+themes/archive-01/**.*
