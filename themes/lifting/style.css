@@ -11,8 +11,6 @@ License URI: LICENSE
 This theme, like WordPress, is licensed under the GPL.
 */
 
-@import 'reset.css';
-
 *,
 *::after,
 *::before {
@@ -35,6 +33,17 @@ body {
   display: flex;
   flex-direction: column;
   color: #212529;
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+p {
+  margin: 0;
 }
 
 .site-content {
@@ -101,8 +110,9 @@ button.close {
 .display-3,
 .display-4 {
     font: italic 700 .75rem/1.33333333334 'Roboto Condensed', 'Roboto', 'Helvetica Neue', Helvetica, sans-serif;
-    margin-bottom: .5rem;
     color: inherit;
+    margin: 0;
+    margin-bottom: .5rem;
 }
 
 .h1 { font-size: 37.5px; }
@@ -599,6 +609,10 @@ button.is-set:before,
   border-top: 1px solid #DDDDDD;
 }
 
+.cat-item {
+  background: #A76053;
+}
+
 .cat-item a {
   background-position: center center;
   background-repeat: no-repeat;
@@ -610,6 +624,7 @@ button.is-set:before,
   position: relative;
   text-align: center;
   text-transform: uppercase;
+  filter: grayscale(100%);
 }
 
 .cat-item-1 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-01.jpg'); }
