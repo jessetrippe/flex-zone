@@ -21,9 +21,7 @@ if ( is_front_page() || is_tax() ) {
 		echo get_queried_object()->description;
 	}
 	echo '</div><ul>';
-
 	$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
-
 	if ($term->parent == 0) {
 		wp_list_categories('taxonomy=week&depth=1&title_li=&child_of=' . $term->term_id);
 	} else {
@@ -49,9 +47,7 @@ if ( is_front_page() || is_tax() ) {
 	<?php endwhile;
 
 	else :
-
 		echo '<h1>Page cannot be found</h1>';
-
 	endif;
 }
 

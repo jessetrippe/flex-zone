@@ -30,7 +30,7 @@ while ( have_posts() ) : the_post(); ?>
       <video muted playsinline loop class="w-100 d-block">
         <?php echo '<source src="http://cdn.madebyjesse.com/lifting-assets/' . $post->post_name . '.mp4" type="video/mp4">'; ?>
       </video>
-      <div class="px-3 actionlist js-set-options-container">
+      <div class="actionlist px-3 mb-auto js-set-options-container">
         <button class="d-flex p-3 w-100 border-bottom border-silver js-sets-trigger" data-toggle="actionsheet" data-target="#actionsheet-<?php the_ID(); ?>">
           <span class="font-weight-bold">Sets</span>
           <span class="ml-auto js-value"></span>
@@ -45,29 +45,33 @@ while ( have_posts() ) : the_post(); ?>
         </button>
       </div>
       <div class="actionsheet is-hidden" id="actionsheet-<?php echo the_ID(); ?>">
-        <div class="actionsheet-options js-set-options-list-1"></div>
+        <div class="actionsheet-options js-set-options-list-1">
+          <div class="webkit-overflow-scroll-bug"></div>
+        </div>
         <div class="actionsheet-cancel">
           <button class="btn btn-block btn-ghost" data-dismiss="actionsheet">Cancel</button>
         </div>
       </div>
-      <div class="p-3 modal-done-container">
+      <div class="p-3">
         <button class="btn btn-block btn-ghost black" data-dismiss="modal">Done</button>
       </div>
     </div>
-    <?php
-      $comments_args = array(
-        'id_form' => 'commentform-' . $post->ID,
-        'title_reply' => '',
-        'title_reply_before' => '',
-        'title_reply_after' => '',
-        'logged_in_as' => '',
-        'cancel_reply_after' => '',
-        'cancel_reply_link' => '',
-        'cancel_reply_before' => '',
-        'comment_notes_after' => '',
-        'comment_field' => '<input type="text" name="comment" value="0">',
-      );
-      comment_form($comments_args);
-    ?>
+    <div class="is-hidden">
+      <?php
+        $comments_args = array(
+          'id_form' => 'commentform-' . $post->ID,
+          'title_reply' => '',
+          'title_reply_before' => '',
+          'title_reply_after' => '',
+          'logged_in_as' => '',
+          'cancel_reply_after' => '',
+          'cancel_reply_link' => '',
+          'cancel_reply_before' => '',
+          'comment_notes_after' => '',
+          'comment_field' => '<input type="text" name="comment" value="0">',
+        );
+        comment_form($comments_args);
+      ?>
+    </div>
   </li>
 <?php endwhile;

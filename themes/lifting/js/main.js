@@ -7,7 +7,6 @@ jQuery(document).ready(function ($) {
 
     $(".comment-respond").each(function () {
 
-        $(this).addClass("is-hidden");
         var postId = $(this).find("[id^='commentform-']").attr('id').replace(/commentform-/, '');
         var postContainer = $("[data-post-id=" + postId + "]");
         var currentWeightSet = postContainer.find(".js-set-settings").text().trim();
@@ -83,13 +82,18 @@ jQuery(document).on("click", ".js-set-options-container button", function () {
     var setOptionsList = setOptionsOverlay.find(".js-set-options-list-1");
 
     setOptionsOverlay.removeClass("is-hidden").addClass("is-shown");
-    setOptionsList.html("");
+    setOptionsList.find("button").remove();
+    setOptionsList.find(".webkit-overflow-scroll-bug").addClass("is-hidden");
 
     if (jQuery(this).hasClass("js-weight-trigger")) {
 
         var item = 0;
         while (item <= 300) {
             setOptionsList.append("<button class='p-3 w-100 border-bottom border-silver' data-dismiss='actionsheet'>" + item + "</button>");
+
+            if (item == currentSet) {
+                setOptionsList.find("button").last().addClass("is-set");
+            }
 
             if (item < 30) {
                 item = parseFloat(item) + parseFloat(2.5);
@@ -101,9 +105,18 @@ jQuery(document).on("click", ".js-set-options-container button", function () {
         var item = 0;
         while (item <= 20) {
             setOptionsList.append("<button class='p-3 w-100 border-bottom border-silver' data-dismiss='actionsheet'>" + item + "</button>");
+
+            if (item == currentSet) {
+                setOptionsList.find("button").last().addClass("is-set");
+            }
+
             item += 1;
         }
     }
+
+    setOptionsList.scrollTop(0);
+    setOptionsList.scrollTop( setOptionsList.find("button.is-set").position().top - 70);
+
 });
 
 jQuery(document).on("click", ".js-set-options-list-1 button", function () {
@@ -117,12 +130,14 @@ jQuery(document).on("click", ".js-set-options-list-1 button", function () {
     var setWeight = setOptionsContainer.find(".js-weight-trigger .js-value").text();
     var completeSet = setSets + "×" + setReps + "×" + setWeight;
 
+    jQuery(this).addClass("is-set").siblings(".is-set").removeClass("is-set");
     jQuery(this).closest("[data-post-id]").find("input[name='comment']").attr("value", completeSet);
     jQuery(this).closest("[data-post-id]").find(".js-set-settings").html(completeSet);
 
     setTimeout(function () {
         jQuery(this).closest("[data-post-id]").find("[id^='actionsheet-']").removeClass("is-shown");
-        jQuery(".js-set-options-list-1").html("");
+        jQuery(".js-set-options-list-1 .webkit-overflow-scroll-bug").removeClass("is-hidden");
+        jQuery(".js-set-options-list-1 button").remove();
     }, 250);
 
     var submitData = function () {
