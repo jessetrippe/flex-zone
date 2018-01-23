@@ -67,10 +67,31 @@ add_action( 'wp_enqueue_scripts', 'scripts' );
 /**
  * Remove posts.
  */
-function remove_posts_menu() {
-    remove_menu_page('edit.php');
+// function remove_posts_menu() {
+//     remove_menu_page('edit.php');
+// }
+// add_action('admin_init', 'remove_posts_menu');
+
+/**
+ * Add taxonomies (tags and categories) for exercises post type.
+ */
+add_action( 'init', 'build_taxonomies', 0 );
+function build_taxonomies() {
+    register_taxonomy( 'week', 'exercises', array(
+        'hierarchical' => true,
+        'label' =>
+        'Week',
+        'query_var' => true,
+        'rewrite' => true,
+    ) );
+    register_taxonomy( 'muscles', 'exercises', array(
+        'hierarchical' => false,
+        'label' =>
+        'Muscles',
+        'query_var' => true,
+        'rewrite' => true,
+    ) );
 }
-add_action('admin_init', 'remove_posts_menu');
 
 /**
  * Create exercises post type.
@@ -95,27 +116,6 @@ function exercises_posttype() {
 }
 
 add_action('init', 'exercises_posttype');
-
-/**
- * Add taxonomies (tags and categories) for exercises post type.
- */
-add_action( 'init', 'build_taxonomies', 0 );
-function build_taxonomies() {
-    register_taxonomy( 'week', 'exercises', array(
-        'hierarchical' => true,
-        'label' =>
-        'Week',
-        'query_var' => true,
-        'rewrite' => true,
-    ) );
-    register_taxonomy( 'muscles', 'exercises', array(
-        'hierarchical' => false,
-        'label' =>
-        'Muscles',
-        'query_var' => true,
-        'rewrite' => true,
-    ) );
-}
 
 //Registers individual meta boxes for custom post type
 function add_exercises_metaboxes($post) {

@@ -117,8 +117,7 @@ button.close {
 .display-4 { font-size: 52.5px; }
 
 .small, small {
-    font-size: 80%;
-    font-weight: 400;
+  font-size: 80%;
 }
 
 .text-center { text-align: center; }
@@ -479,23 +478,21 @@ button.close {
 
 .actionsheet {
   animation: slideHalfOutDown .25s;
-  background: #fff;
-  border-top-left-radius: .5rem;
-  border-top-right-radius: .5rem;
   bottom: -100%;
   display: flex;
   flex-direction: column;
   left: 0;
   max-height: 50%;
   min-height: 25%;
-  overflow-y: scroll;
-  position: fixed;
   right: 0;
+  position: fixed;
+  padding: .5rem;
   z-index: 1100;
 }
 
 .actionsheet.is-shown {
   animation: slideHalfInUp .25s;
+  bottom: 0;
 }
 
 @keyframes slideHalfInUp {
@@ -509,18 +506,16 @@ button.close {
     100% { bottom: -100%; top: auto;}
 }
 
-.actionsheet.is-shown {
-  bottom: 0;
-}
-
 .actionsheet-options {
-  overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
+  border-radius: .5rem;
+  background: #fff;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .actionsheet-cancel {
-  padding: .5rem;
-  box-shadow: 0 0 10px 0 rgba(0,0,0,0.25);
+  padding-top: .5rem;
 }
 
 @keyframes slideInUp {
@@ -605,51 +600,49 @@ button.is-set:before,
 }
 
 .cat-item a {
-  display: block;
-  padding: 3rem;
-  text-align: center;
-  font-weight: 700;
-  font-family: 'Roboto Condensed', 'Roboto', 'Helvetica Neue', Helvetica, sans-serif;
+  background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center center;
   color: #fff;
-  font-size: 26.25px;
-  text-transform: uppercase;
+  display: block;
+  font: italic 700 26.25px/1.33333333334 'Roboto Condensed', 'Roboto', 'Helvetica Neue', Helvetica, sans-serif;
+  padding: 3rem;
   position: relative;
+  text-align: center;
+  text-transform: uppercase;
 }
 
-.cat-item-1 a { background-image: url('/wp-content/themes/lifting/img/bg-img-01.jpg'); }
-.cat-item-2 a { background-image: url('/wp-content/themes/lifting/img/bg-img-01.jpg'); }
-.cat-item-3 a { background-image: url('/wp-content/themes/lifting/img/bg-img-01.jpg'); }
-.cat-item-4 a { background-image: url('/wp-content/themes/lifting/img/bg-img-01.jpg'); }
-.cat-item-5 a { background-image: url('/wp-content/themes/lifting/img/bg-img-01.jpg'); }
-.cat-item-6 a { background-image: url('/wp-content/themes/lifting/img/bg-img-01.jpg'); }
-.cat-item-7 a { background-image: url('/wp-content/themes/lifting/img/bg-img-01.jpg'); }
-.cat-item-8 a { background-image: url('/wp-content/themes/lifting/img/bg-img-01.jpg'); }
-.cat-item-9 a { background-image: url('/wp-content/themes/lifting/img/bg-img-01.jpg'); }
-.cat-item-10 a { background-image: url('/wp-content/themes/lifting/img/bg-img-02.jpg'); }
-.cat-item-11 a { background-image: url('/wp-content/themes/lifting/img/bg-img-04.jpg'); }
-.cat-item-12 a { background-image: url('/wp-content/themes/lifting/img/bg-img-09.jpg'); }
-.cat-item-13 a { background-image: url('/wp-content/themes/lifting/img/bg-img-06.jpg'); }
-.cat-item-14 a { background-image: url('/wp-content/themes/lifting/img/bg-img-07.jpg'); }
-.cat-item-15 a { background-image: url('/wp-content/themes/lifting/img/bg-img-08.jpg'); }
-.cat-item-16 a { background-image: url('/wp-content/themes/lifting/img/bg-img-05.jpg'); }
-.cat-item-17 a { background-image: url('/wp-content/themes/lifting/img/bg-img-05.jpg'); }
-.cat-item-18 a { background-image: url('/wp-content/themes/lifting/img/bg-img-03.jpg'); }
-.cat-item-19 a { background-image: url('/wp-content/themes/lifting/img/bg-img-03.jpg'); }
-.cat-item-20 a { background-image: url('/wp-content/themes/lifting/img/bg-img-03.jpg'); }
-.cat-item-21 a { background-image: url('/wp-content/themes/lifting/img/bg-img-05.jpg'); }
-.cat-item-22 a { background-image: url('/wp-content/themes/lifting/img/bg-img-07.jpg'); }
-.cat-item-23 a { background-image: url('/wp-content/themes/lifting/img/bg-img-07.jpg'); }
-.cat-item-24 a { background-image: url('/wp-content/themes/lifting/img/bg-img-05.jpg'); }
-.cat-item-25 a { background-image: url('/wp-content/themes/lifting/img/bg-img-06.jpg'); }
-.cat-item-26 a { background-image: url('/wp-content/themes/lifting/img/bg-img-06.jpg'); }
-.cat-item-27 a { background-image: url('/wp-content/themes/lifting/img/bg-img-06.jpg'); }
-.cat-item-28 a { background-image: url('/wp-content/themes/lifting/img/bg-img-06.jpg'); }
-.cat-item-29 a { background-image: url('/wp-content/themes/lifting/img/bg-img-06.jpg'); }
-.cat-item-30 a { background-image: url('/wp-content/themes/lifting/img/bg-img-06.jpg'); }
-.cat-item-31 a { background-image: url('/wp-content/themes/lifting/img/bg-img-06.jpg'); }
+.cat-item-1 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-01.jpg'); }
+.cat-item-2 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-02.jpg'); }
+.cat-item-3 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-03.jpg'); }
+.cat-item-4 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-04.jpg'); }
+.cat-item-5 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-05.jpg'); }
+.cat-item-6 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-06.jpg'); }
+.cat-item-7 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-07.jpg'); }
+.cat-item-8 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-08.jpg'); }
+.cat-item-9 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-09.jpg'); }
+.cat-item-10 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-10.jpg'); }
+.cat-item-11 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-11.jpg'); }
+.cat-item-12 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-12.jpg'); }
+.cat-item-13 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-13.jpg'); }
+.cat-item-14 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-14.jpg'); }
+.cat-item-15 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-15.jpg'); }
+.cat-item-16 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-16.jpg'); }
+.cat-item-17 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-17.jpg'); }
+.cat-item-18 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-18.jpg'); }
+.cat-item-19 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-19.jpg'); }
+.cat-item-20 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-20.jpg'); }
+.cat-item-21 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-21.jpg'); }
+.cat-item-22 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-22.jpg'); }
+.cat-item-23 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-23.jpg'); }
+.cat-item-24 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-24.jpg'); }
+.cat-item-25 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-25.jpg'); }
+.cat-item-26 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-26.jpg'); }
+.cat-item-27 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-27.jpg'); }
+.cat-item-28 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-28.jpg'); }
+.cat-item-29 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-29.jpg'); }
+.cat-item-30 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-30.jpg'); }
+.cat-item-31 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-31.jpg'); }
 
 .exercises > .modal {
   flex-direction: column;
