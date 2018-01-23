@@ -16,8 +16,6 @@
 	<link rel="apple-touch-startup-image" href="img/splash.png" />
 	<link rel="apple-touch-icon-precomposed" href="img/icon.png"/>
 
-	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:700|Roboto:300,400" rel="stylesheet">
-
 	<?php wp_head(); ?>
 </head>
 

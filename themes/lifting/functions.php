@@ -55,6 +55,7 @@ function scripts() {
     /**
      * Production styles and scripts.
      */
+    wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Roboto+Condensed:700i|Roboto:400', false, false, 'screen' );
     wp_enqueue_style( 'lifting-style', get_template_directory_uri() . '/style.css', false, false, 'screen' );
     wp_deregister_script( 'jquery' );
     wp_register_script( 'jquery', includes_url( '/js/jquery/jquery.js' ), false, false, true );
