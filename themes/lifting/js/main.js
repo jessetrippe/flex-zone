@@ -5,6 +5,8 @@ jQuery(document).ready(function ($) {
         // Callback message or action here.
     });
 
+    $(".site-main").css("border-top-width",$(".site-header").outerHeight());
+
     $(".comment-respond").each(function () {
 
         var postId = $(this).find("[id^='commentform-']").attr('id').replace(/commentform-/, '');
