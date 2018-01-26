@@ -22,19 +22,25 @@ This theme, like WordPress, is licensed under the GPL.
 }
 
 :root {
+  /* Fonts */
   --base-font-family: 'Roboto', 'Helvetica Neue', Helvetica, sans-serif;
   --headings-font-family: 'Roboto Condensed', 'Roboto', 'Helvetica Neue', Helvetica, sans-serif;
 
   /* Colors */
-  --base-font-color: #212529;
-  --text-muted-color: #868e96;
-  --base-icon-action-color: var(--base-font-color);
-  --base-ui-color: #ddd;
   --yellow: #dad04e;
   --green: #47e7be;
   --red: #e76647;
   --purple: #8d47e7;
+  --black: #212529;
+  --silver: #ddd;
+  --gray: #868e96;
 
+  --base-font-color: var(--black);
+  --text-muted-color: var(--gray);
+  --base-icon-action-color: var(--black);
+  --base-ui-color: var(--silver);
+
+  /* Set REM unit */
   font-size: 20px;
 }
 
@@ -331,6 +337,9 @@ button.close {
 .border-x { border-left-width: 1px; border-right-width: 1px; }
 
 .bg-white { background-color: #fff; }
+
+.fill-silver { fill: var(--silver); }
+.fill-black { fill: var(--black); }
 
 .main-navigation a {
   position: relative;
