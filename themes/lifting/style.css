@@ -343,17 +343,9 @@ button.close {
 
 .main-navigation a {
   position: relative;
-  text-indent: -100vw;
-  overflow: hidden;
-  display: none;
 }
 
-.current-menu-parent > a,
-.current-week-ancestor > a {
-  display: block;
-}
-
-.main-navigation li a:before,
+.main-navigation a:before,
 .cat-item a:before {
   content: "";
   position: absolute;
