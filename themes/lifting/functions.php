@@ -103,15 +103,7 @@ add_action( 'init', 'build_taxonomies', 0 );
 function build_taxonomies() {
     register_taxonomy( 'week', 'exercises', array(
         'hierarchical' => true,
-        'label' =>
-        'Week',
-        'query_var' => true,
-        'rewrite' => true,
-    ) );
-    register_taxonomy( 'muscles', 'exercises', array(
-        'hierarchical' => false,
-        'label' =>
-        'Muscles',
+        'label' => 'Week',
         'query_var' => true,
         'rewrite' => true,
     ) );
