@@ -21,18 +21,26 @@ This theme, like WordPress, is licensed under the GPL.
   text-rendering: optimizeLegibility;
 }
 
-html {
-  font: 400 20px/20px 'Roboto', 'Helvetica Neue', Helvetica, sans-serif;
-  height: 100%;
+:root {
+  --base-font-family: 'Roboto', 'Helvetica Neue', Helvetica, sans-serif;
+  --headings-font-family: 'Roboto Condensed', 'Roboto', 'Helvetica Neue', Helvetica, sans-serif;
+
+  /* Colors */
+  --base-font-color: #212529;
+  --text-muted-color: #868e96;
+  --base-icon-action-color: var(--base-font-color);
+  --base-ui-color: #ddd;
+  --yellow: #dad04e;
+  --green: #47e7be;
+  --red: #e76647;
+  --purple: #8d47e7;
+
+  font-size: 20px;
 }
 
 body {
-  font-size: 15px;
-  line-height: 1.33333333334;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: #212529;
+  color: var(--base-font-color);
+  font: 400 .75rem/1.33333333334 var(--base-font-family);
   margin: 0;
 }
 
@@ -44,18 +52,6 @@ ul {
 
 p {
   margin: 0;
-}
-
-.site-content {
-  flex: 1;
-}
-
-.site-content-container {
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
 }
 
 a {
@@ -70,6 +66,7 @@ a {
 textarea,
 select,
 button {
+  -webkit-appearance: none;
   background: none;
   border: 0;
   padding: 0;
@@ -78,7 +75,15 @@ button {
   font: inherit;
   color: inherit;
   border-radius: 0;
-  -webkit-appearance: none;
+}
+
+.site-header {
+  position: fixed;
+  width: 100%;
+}
+
+.site-main {
+  border-top: 0 solid transparent;
 }
 
 .close {
@@ -86,7 +91,7 @@ button {
     font-size: 1.5rem;
     font-weight: 700;
     line-height: .5;
-    color: #000;
+    color: var(--base-icon-action-color);
     text-shadow: 0 1px 0 #fff;
     opacity: .5;
 }
@@ -109,32 +114,36 @@ button.close {
 .display-2,
 .display-3,
 .display-4 {
-    font: italic 700 .75rem/1.33333333334 'Roboto Condensed', 'Roboto', 'Helvetica Neue', Helvetica, sans-serif;
-    color: inherit;
+    font-style: italic;
+    font-family: var(--headings-font-family);
+    font-weight: 700;
     margin: 0;
-    margin-bottom: .5rem;
 }
 
-.h1 { font-size: 37.5px; }
-.h2 { font-size: 30px; }
-.h3 { font-size: 26.25px; }
-.h4 { font-size: 22.5px; }
-.h5 { font-size: 18.75px; }
-.h6 { font-size: 15px; line-height: 1rem; }
-.display-1 { font-size: 90px; }
-.display-2 { font-size: 82.5px; }
-.display-3 { font-size: 67.5px; }
-.display-4 { font-size: 52.5px; }
+.h1 { font-size: 1.875rem; }
+.h2 { font-size: 1.5rem; }
+.h3 { font-size: 1.3125rem; }
+.h4 { font-size: 1.125rem; }
+.h5 { font-size: 0.9375rem; }
+.h6 { font-size: .75rem; line-height: 1rem; }
+.display-1 { font-size: 4.5rem; }
+.display-2 { font-size: 4.125rem; }
+.display-3 { font-size: 3.375rem; }
+.display-4 { font-size: 2.625rem; }
 
 .small, small {
   font-size: 80%;
 }
 
+.float-left { float: left; }
+.float-right { float: right; }
+.float-none { float: none; }
+
 .text-center { text-align: center; }
 .text-right { text-align: right; }
 .text-left { text-align: left; }
 
-.text-muted { color: #868e96; }
+.text-muted { color: var(--text-muted-color); }
 
 .text-truncate {
     overflow: hidden;
@@ -290,12 +299,11 @@ button.close {
 .d-flex { display: flex; }
 .d-block { display: block; }
 .d-inline-block { display: inline-block; }
+.align-items-center { align-items: center; }
 
 .p-absolute { position: absolute; }
 .p-relative { position: relative; }
 .p-static { position: static; }
-
-.align-items-center { align-items: center; }
 
 .w-10 { width: 10%; }
 .w-20 { width: 20%; }
@@ -312,111 +320,19 @@ button.close {
 .w-90 { width: 90%; }
 .w-100 { width: 100%; }
 
-.border { border: 1px solid #eee; }
-.border-top { border-top: 1px solid #eee; }
-.border-right { border-right: 1px solid #eee; }
-.border-bottom { border-bottom: 1px solid #eee; }
-.border-left { border-left: 1px solid #eee; }
-.border-y { border-bottom: 1px solid #eee; border-top: 1px solid #eee; }
-.border-x { border-left: 1px solid #eee; border-right: 1px solid #eee; }
+[class^='border'],
+[class*=' border'] { border: 0 solid var(--base-ui-color); }
+.border { border-width: 1px; }
+.border-top { border-top-width: 1px; }
+.border-right { border-right-width: 1px; }
+.border-bottom { border-bottom-width: 1px; }
+.border-left { border-left-width: 1px; }
+.border-y { border-bottom-width: 1px; border-top-width: 1px; }
+.border-x { border-left-width: 1px; border-right-width: 1px; }
 
-/* Backgrounds */
-.bg-navy { background-color: #001F3F; }
-.bg-blue { background-color: #0074D9; }
-.bg-aqua { background-color: #7FDBFF; }
-.bg-teal { background-color: #39CCCC; }
-.bg-olive { background-color: #3D9970; }
-.bg-green { background-color: #2ECC40; }
-.bg-lime { background-color: #01FF70; }
-.bg-yellow { background-color: #FFDC00; }
-.bg-orange { background-color: #FF851B; }
-.bg-red { background-color: #FF4136; }
-.bg-fuchsia { background-color: #F012BE; }
-.bg-purple { background-color: #B10DC9; }
-.bg-maroon { background-color: #85144B; }
-.bg-white { background-color: #FFFFFF; }
-.bg-gray { background-color: #AAAAAA; }
-.bg-silver { background-color: #DDDDDD; }
-.bg-black { background-color: #111111; }
+.bg-white { background-color: #fff; }
 
-/* Colors */
-.navy { color: #001F3F; }
-.blue { color: #0074D9; }
-.aqua { color: #7FDBFF; }
-.teal { color: #39CCCC; }
-.olive { color: #3D9970; }
-.green { color: #2ECC40; }
-.lime { color: #01FF70; }
-.yellow { color: #FFDC00; }
-.orange { color: #FF851B; }
-.red { color: #FF4136; }
-.fuchsia { color: #F012BE; }
-.purple { color: #B10DC9; }
-.maroon { color: #85144B; }
-.white { color: #FFFFFF; }
-.silver { color: #DDDDDD; }
-.gray { color: #AAAAAA; }
-.black { color: #111111; }
-/* Border colors
- * Use with another border utility that sets border-width and style
-*/
-.border-navy { border-color: #001F3F; }
-.border-blue { border-color: #0074D9; }
-.border-aqua { border-color: #7FDBFF; }
-.border-teal { border-color: #39CCCC; }
-.border-olive { border-color: #3D9970; }
-.border-green { border-color: #2ECC40; }
-.border-lime { border-color: #01FF70; }
-.border-yellow { border-color: #FFDC00; }
-.border-orange { border-color: #FF851B; }
-.border-red { border-color: #FF4136; }
-.border-fuchsia { border-color: #F012BE; }
-.border-purple { border-color: #B10DC9; }
-.border-maroon { border-color: #85144B; }
-.border-white { border-color: #FFFFFF; }
-.border-gray { border-color: #AAAAAA; }
-.border-silver { border-color: #DDDDDD; }
-.border-black { border-color: #111111; }
-
-/* Fills for SVG */
-.fill-navy { fill: #001F3F; }
-.fill-blue { fill: #0074D9; }
-.fill-aqua { fill: #7FDBFF; }
-.fill-teal { fill: #39CCCC; }
-.fill-olive { fill: #3D9970; }
-.fill-green { fill: #2ECC40; }
-.fill-lime { fill: #01FF70; }
-.fill-yellow { fill: #FFDC00; }
-.fill-orange { fill: #FF851B; }
-.fill-red { fill: #FF4136; }
-.fill-fuchsia { fill: #F012BE; }
-.fill-purple { fill: #B10DC9; }
-.fill-maroon { fill: #85144B; }
-.fill-white { fill: #FFFFFF; }
-.fill-gray { fill: #AAAAAA; }
-.fill-silver { fill: #DDDDDD; }
-.fill-black { fill: #111111; }
-
-/* Strokes for SVG */
-.stroke-navy { stroke: #001F3F; }
-.stroke-blue { stroke: #0074D9; }
-.stroke-aqua { stroke: #7FDBFF; }
-.stroke-teal { stroke: #39CCCC; }
-.stroke-olive { stroke: #3D9970; }
-.stroke-green { stroke: #2ECC40; }
-.stroke-lime { stroke: #01FF70; }
-.stroke-yellow { stroke: #FFDC00; }
-.stroke-orange { stroke: #FF851B; }
-.stroke-red { stroke: #FF4136; }
-.stroke-fuchsia { stroke: #F012BE; }
-.stroke-purple { stroke: #B10DC9; }
-.stroke-maroon { stroke: #85144B; }
-.stroke-white { stroke: #FFFFFF; }
-.stroke-gray { stroke: #AAAAAA; }
-.stroke-silver { stroke: #DDDDDD; }
-.stroke-black { stroke: #111111; }
-
-.main-navigation a {
+/* .main-navigation a {
   position: relative;
   text-indent: -9999px;
   overflow: hidden;
@@ -426,7 +342,7 @@ button.close {
 .current-menu-parent > a,
 .current-week-ancestor > a {
   display: block;
-}
+} */
 
 .main-navigation li a:before,
 .cat-item a:before {
@@ -436,8 +352,9 @@ button.close {
   top: 4.5px;
   height: .5rem;
   width: .5rem;
-  border-top: 2px solid black;
-  border-right: 2px solid black;
+  border-color: var(--base-icon-action-color);
+  border-top: 2px solid;
+  border-right: 2px solid;
   transform: rotate(225deg);
 }
 
@@ -571,7 +488,7 @@ button.close {
 
 .btn-ghost {
     background-color: #FFF;
-    border: 1px solid #DDD;
+    border: 1px solid var(--base-ui-color);
     color: #212529;
     box-shadow: 0 2px 0 0 #EEE;
 }
@@ -590,8 +507,9 @@ button.is-set:before,
   display: block;
   height: .75rem;
   width: .45rem;
-  border-bottom: 2px solid #000;
-  border-right: 2px solid #000;
+  border: 2px solid var(--base-icon-action-color);
+  border-top: 0;
+  border-left: 0;
   position: absolute;
   transform: rotate(45deg);
   top: 1rem;
@@ -606,7 +524,7 @@ button.is-set:before,
 }
 
 .actionlist-item + .actionlist-item {
-  border-top: 1px solid #DDDDDD;
+  border-top: 1px solid var(--base-ui-color);
 }
 
 .cat-item {
@@ -619,7 +537,7 @@ button.is-set:before,
   background-size: cover;
   color: #fff;
   display: block;
-  font: italic 700 26.25px/1.33333333334 'Roboto Condensed', 'Roboto', 'Helvetica Neue', Helvetica, sans-serif;
+  font: italic 700 26.25px/1.33333333334 var(--headings-font-family);
   padding: 3rem;
   position: relative;
   text-align: center;
@@ -627,37 +545,37 @@ button.is-set:before,
   filter: grayscale(100%);
 }
 
-.cat-item-1 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-01.jpg'); }
-.cat-item-2 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-02.jpg'); }
-.cat-item-3 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-03.jpg'); }
-.cat-item-4 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-04.jpg'); }
-.cat-item-5 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-05.jpg'); }
-.cat-item-6 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-06.jpg'); }
-.cat-item-7 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-07.jpg'); }
-.cat-item-8 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-08.jpg'); }
-.cat-item-9 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-09.jpg'); }
-.cat-item-10 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-10.jpg'); }
-.cat-item-11 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-11.jpg'); }
-.cat-item-12 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-12.jpg'); }
-.cat-item-13 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-13.jpg'); }
-.cat-item-14 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-14.jpg'); }
-.cat-item-15 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-15.jpg'); }
-.cat-item-16 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-16.jpg'); }
-.cat-item-17 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-17.jpg'); }
-.cat-item-18 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-18.jpg'); }
-.cat-item-19 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-19.jpg'); }
-.cat-item-20 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-20.jpg'); }
-.cat-item-21 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-21.jpg'); }
-.cat-item-22 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-22.jpg'); }
-.cat-item-23 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-23.jpg'); }
-.cat-item-24 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-24.jpg'); }
-.cat-item-25 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-25.jpg'); }
-.cat-item-26 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-26.jpg'); }
-.cat-item-27 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-27.jpg'); }
-.cat-item-28 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-28.jpg'); }
-.cat-item-29 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-29.jpg'); }
-.cat-item-30 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-30.jpg'); }
-.cat-item-31 a { background-image: url('/wp-content/themes/lifting/img/gym-photo-31.jpg'); }
+.cat-item-1 a { background-image: url('img/gym-photo-01.jpg'); }
+.cat-item-2 a { background-image: url('img/gym-photo-02.jpg'); }
+.cat-item-3 a { background-image: url('img/gym-photo-03.jpg'); }
+.cat-item-4 a { background-image: url('img/gym-photo-04.jpg'); }
+.cat-item-5 a { background-image: url('img/gym-photo-05.jpg'); }
+.cat-item-6 a { background-image: url('img/gym-photo-06.jpg'); }
+.cat-item-7 a { background-image: url('img/gym-photo-07.jpg'); }
+.cat-item-8 a { background-image: url('img/gym-photo-08.jpg'); }
+.cat-item-9 a { background-image: url('img/gym-photo-09.jpg'); }
+.cat-item-10 a { background-image: url('img/gym-photo-10.jpg'); }
+.cat-item-11 a { background-image: url('img/gym-photo-11.jpg'); }
+.cat-item-12 a { background-image: url('img/gym-photo-12.jpg'); }
+.cat-item-13 a { background-image: url('img/gym-photo-13.jpg'); }
+.cat-item-14 a { background-image: url('img/gym-photo-14.jpg'); }
+.cat-item-15 a { background-image: url('img/gym-photo-15.jpg'); }
+.cat-item-16 a { background-image: url('img/gym-photo-16.jpg'); }
+.cat-item-17 a { background-image: url('img/gym-photo-17.jpg'); }
+.cat-item-18 a { background-image: url('img/gym-photo-18.jpg'); }
+.cat-item-19 a { background-image: url('img/gym-photo-19.jpg'); }
+.cat-item-20 a { background-image: url('img/gym-photo-20.jpg'); }
+.cat-item-21 a { background-image: url('img/gym-photo-21.jpg'); }
+.cat-item-22 a { background-image: url('img/gym-photo-22.jpg'); }
+.cat-item-23 a { background-image: url('img/gym-photo-23.jpg'); }
+.cat-item-24 a { background-image: url('img/gym-photo-24.jpg'); }
+.cat-item-25 a { background-image: url('img/gym-photo-25.jpg'); }
+.cat-item-26 a { background-image: url('img/gym-photo-26.jpg'); }
+.cat-item-27 a { background-image: url('img/gym-photo-27.jpg'); }
+.cat-item-28 a { background-image: url('img/gym-photo-28.jpg'); }
+.cat-item-29 a { background-image: url('img/gym-photo-29.jpg'); }
+.cat-item-30 a { background-image: url('img/gym-photo-30.jpg'); }
+.cat-item-31 a { background-image: url('img/gym-photo-31.jpg'); }
 
 .exercises > .modal {
   flex-direction: column;
