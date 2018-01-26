@@ -22,7 +22,7 @@
 <body <?php body_class(); ?>>
 
 	<header id="masthead" class="site-header border-bottom bg-white">
-		<nav id="site-navigation" class="main-navigation p-2 float-left">
+		<nav id="site-navigation" class="main-navigation p-2 p-absolute">
 			<?php if ( !is_home() ) :
 				wp_nav_menu( array(
 					'theme_location' => 'menu-1',
