@@ -432,7 +432,7 @@ button {
   font: inherit;
   border-radius: 8px;
   padding: 1rem;
-  background: var(--blue);
+  background: #98ca14;
   color: #fff;
   padding: .75rem 1rem;
   cursor: pointer;
@@ -463,8 +463,9 @@ button {
   margin-top: .25rem;
 }
 
-.btn-link {
-  color: var(--blue);
+.btn-link,
+a[href] {
+  color: #98ca14;
   font-weight: 700;
   cursor: pointer;
 }

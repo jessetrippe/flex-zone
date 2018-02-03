@@ -7,34 +7,28 @@
 		<!-- Show errors if there are any -->
 		<?php if ( count( $attributes['errors'] ) > 0 ) : ?>
 			<?php foreach ( $attributes['errors'] as $error ) : ?>
-				<p class="login-error">
+				<p class="login-error mb-3">
 					<?php echo $error; ?>
 				</p>
 			<?php endforeach; ?>
 		<?php endif; ?>
 
-		<!-- Show logged out message if user just logged out -->
-		<?php if ( $attributes['logged_out'] ) : ?>
-			<p>
-				<?php _e( 'You have signed out. Would you like to sign in again?', 'personalize-login' ); ?>
-			</p>
-		<?php endif; ?>
-
-		<?php if ( $attributes['registered'] ) : ?>
-			<p>You have registered successfully. Sign in below.</p>
-		<?php endif; ?>
-
-		<?php if ( $attributes['lost_password_sent'] ) : ?>
-			<p>
-				<?php _e( 'Check your email for a link to reset your password.', 'personalize-login' ); ?>
-			</p>
-		<?php endif; ?>
-
-		<?php if ( $attributes['password_updated'] ) : ?>
-			<p>
-				<?php _e( 'Your password has been changed. You can sign in now.', 'personalize-login' ); ?>
-			</p>
-		<?php endif; ?>
+		<p class="mb-3">
+			<?php
+				if ( $attributes['logged_out'] ) {
+					echo 'You have signed out. Would you like to sign in again?';
+				}
+				if ( $attributes['registered'] ) {
+					echo 'You have registered successfully. Sign in below.';
+				}
+				if ( $attributes['lost_password_sent'] ) {
+					echo 'Check your email for a link to reset your password.';
+				}
+				if ( $attributes['password_updated'] ) {
+					echo 'Your password has been changed. You can sign in now.';
+				}
+			?>
+		</p>
 
 		<form method="post" action="<?php echo wp_login_url(); ?>" class="">
 			<p class="mb-2">
@@ -47,20 +41,20 @@
 				<label><input name="rememberme" type="checkbox" id="rememberme" value="forever"> Remember Me</label>
 			</p>
 			<p class="mb-5">
-				<input class="btn btn-block" type="submit" name="wp-submit" id="wp-submit" value="Sign In">
+				<input class="btn btn-block" type="submit" name="wp-submit" id="wp-submit" value="Sign in">
 				<input type="hidden" name="redirect_to" value="http://localhost:8888/">
 			</p>
 		</form>
 
 		<p class="text-center mb-1">
-			<a class="btn-link" href="<?php echo wp_lostpassword_url(); ?>">
+			<a href="<?php echo wp_lostpassword_url(); ?>">
 				Forgot your password?
 			</a>
 		</p>
 
 		<p class="text-center mb-5">
 			Don't have an account?
-			<a class="btn-link" href="<?php echo wp_lostpassword_url(); ?>">
+			<a href="<?php echo wp_lostpassword_url(); ?>">
 				Sign up
 			</a>
 		</p>
