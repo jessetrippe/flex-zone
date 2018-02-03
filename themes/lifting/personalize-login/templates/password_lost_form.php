@@ -1,4 +1,7 @@
-<div id="password-lost-form" class="widecolumn">
+<div id="password-lost-form" class="password-lost-form-container px-4">
+
+	<?php get_template_part( 'img/logo.svg' ); ?>
+
 	<?php if ( $attributes['show_title'] ) : ?>
 		<h3><?php _e( 'Forgot Your Password?', 'personalize-login' ); ?></h3>
 	<?php endif; ?>
@@ -11,7 +14,7 @@
 		<?php endforeach; ?>
 	<?php endif; ?>
 
-	<p>
+	<p class="mb-3">
 		<?php
 			_e(
 				"Enter your email address and we'll send you a link you can use to pick a new password.",
@@ -21,13 +24,12 @@
 	</p>
 
 	<form id="lostpasswordform" action="<?php echo wp_lostpassword_url(); ?>" method="post">
-		<p class="form-row">
-			<label for="user_login"><?php _e( 'Email', 'personalize-login' ); ?>
-			<input class="w-100 border border-silver py-1 px-2" type="text" name="user_login" id="user_login">
+		<p class="mb-3">
+			<input class="text-input" type="text" name="user_login" id="user_login" placeholder="Email address">
 		</p>
 
-		<p class="lostpassword-submit">
-			<input class="w-100 border border-silver py-1 px-2" type="submit" name="submit" class="lostpassword-button" value="Reset Password"/>
+		<p class="mb-5">
+			<input class="btn btn-block" type="submit" name="submit" class="btn btn-block lostpassword-button" value="Send"/>
 		</p>
 	</form>
 </div>

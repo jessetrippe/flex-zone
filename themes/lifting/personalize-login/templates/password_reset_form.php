@@ -1,4 +1,7 @@
-<div id="password-reset-form" class="widecolumn">
+<div id="password-reset-form" class="password-reset-form-container px-4">
+
+	<?php get_template_part( 'img/logo.svg' ); ?>
+
 	<?php if ( $attributes['show_title'] ) : ?>
 		<h3><?php _e( 'Pick a New Password', 'personalize-login' ); ?></h3>
 	<?php endif; ?>
@@ -27,7 +30,7 @@
 		<p class="description"><?php echo wp_get_password_hint(); ?></p>
 
 		<p class="resetpass-submit">
-			<input type="submit" name="submit" id="resetpass-button" class="btn" value="<?php _e( 'Reset Password', 'personalize-login' ); ?>" />
+			<input type="submit" name="submit" id="resetpass-button" class="btn btn-block" value="<?php _e( 'Reset Password', 'personalize-login' ); ?>" />
 		</p>
 	</form>
 </div>
