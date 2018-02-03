@@ -217,8 +217,22 @@ add_filter('show_admin_bar', '__return_false');
  * Only allow sign-in users.
  */
 function members_only() {
-    if ( !is_user_logged_in() && !is_page('member-register') && !is_page('member-login') && !is_page('member-password-lost') ) {
+    if ( !is_user_logged_in() && !is_page('member-register') && !is_page('member-login') && !is_page('member-password-lost') && !is_page('member-password-reset') ) {
        auth_redirect();
     }
 }
 add_action( 'wp', 'members_only' );
+
+require( 'personalize-login/personalize-login.php' );
+
+/**
+ * Add page slug to body class.
+ */
+function add_slug_body_class( $classes ) {
+    global $post;
+    if ( isset( $post ) ) {
+        $classes[] = $post->post_type . '-' . $post->post_name;
+    }
+    return $classes;
+}
+add_filter( 'body_class', 'add_slug_body_class' );
