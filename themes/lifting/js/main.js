@@ -5,36 +5,29 @@ jQuery(document).ready(function ($) {
         // Callback message or action here.
     });
 
-    $(".site-main").css("border-top-width",$(".site-header").outerHeight());
+    $("#main-content").css("border-top-width",$("#masthead").outerHeight());
 
-    $(".comment-respond").each(function () {
+    $("[id^='commentform-']").each(function () {
 
-        var postId = $(this).find("[id^='commentform-']").attr('id').replace(/commentform-/, '');
-        var postContainer = $("[data-post-id=" + postId + "]");
-        var currentWeightSet = postContainer.find(".js-set-settings").text().trim();
-        var fullString = currentWeightSet.split("×");
+        var postId = $(this).attr('id').replace(/commentform-/, '');
+        var postContainer = $("#post-" + postId);
+        var completeCurrentSet = $("#settings-" + postId).text().trim();
+        var fullString = completeCurrentSet.split("×");
         var unit = [
             "sets",
             "reps",
             "weight"
         ];
 
-        postContainer.find("input[name='comment']").attr("value", currentWeightSet);
+        $("#comment-" + postId).attr("value", completeCurrentSet);
 
         $.each(fullString, function (index, value) {
             if (isNaN(value) || value > 300) {
                 value = 0;
             }
-            postContainer.find(".js-" + unit[index] + "-trigger").find(".js-value").html(value);
+            $("#" + unit[index] + "-" + postId).html(value);
         });
     });
-});
-
-jQuery(document).on("click", "#overlay-backdrop", function () {
-    "use strict";
-
-    hideOverlay();
-    hideActionSheet();
 });
 
 jQuery(document).on("click", "[data-dismiss]", function () {
@@ -45,8 +38,6 @@ jQuery(document).on("click", "[data-dismiss]", function () {
     jQuery(this).closest(dismissType).removeClass("is-shown").one("animationend", function (e) {
         jQuery(this).addClass("is-hidden");
     });
-
-    hideOverlay();
 });
 
 jQuery(document).on("click", "[data-toggle]", function () {
@@ -55,46 +46,46 @@ jQuery(document).on("click", "[data-toggle]", function () {
     var targetOverlay = jQuery(jQuery(this).data("target"));
     targetOverlay.removeClass("is-hidden").addClass("is-shown");
 
-    if (targetOverlay.hasClass("actionsheet")) {
-        targetOverlay.before(jQuery("#overlay-backdrop").addClass("is-shown").fadeIn("fast"));
-    }
 });
 
-jQuery(document).on("click", "[data-post-id] > [data-toggle='modal']", function () {
+jQuery(document).on("click", "[id^='post-']", function () {
     "use strict";
 
+    var postId = jQuery(this).attr('id').replace(/post-/, '');
     var targetOverlay = jQuery(jQuery(this).data("target"));
     targetOverlay.one("animationend", function (e) {
-        targetOverlay.find("video").get(0).play();
+        jQuery("#video-" + postId).get(0).play();
     });
 });
 
-jQuery(document).on("click", "[data-post-id] .overlay [data-dismiss='modal']", function () {
+jQuery(document).on("click", "[id^='close-modal-']", function () {
     "use strict";
 
-    jQuery(this).closest("[data-post-id]").find("video").get(0).pause();
+    var postId = jQuery(this).attr('id').replace(/close-modal-/, '');
+    jQuery("#video-" + postId).get(0).pause();
 });
 
-jQuery(document).on("click", ".js-set-options-container button", function () {
+jQuery(document).on("click", "[id^='settings-sets-'], [id^='settings-reps-'], [id^='settings-weight-']", function () {
     "use strict";
 
-    jQuery(this).addClass("is-setting");
-    var currentSet = jQuery(this).find(".js-value").text();
-    var setOptionsOverlay = jQuery(this).closest("[data-post-id]").find("[id^='actionsheet-']");
-    var setOptionsList = setOptionsOverlay.find(".js-set-options-list-1");
+    var settingsType = jQuery(this).attr("data-settings-type");
+    var postId = jQuery(this).attr('id').replace("settings-" + settingsType + "-", '');
+    var currentSetting = jQuery(this).find("[id^='" + settingsType + "']").text();
+    var setOptionsOverlay = jQuery("#modal-settings-" + postId);
+    var setOptionsList = jQuery("#modal-settings-list-" + postId);
 
     setOptionsOverlay.removeClass("is-hidden").addClass("is-shown");
     setOptionsList.find("button").remove();
-    setOptionsList.find(".webkit-overflow-scroll-bug").addClass("is-hidden");
+    jQuery("#overflow-scroll-bug-" + postId).addClass("is-hidden");
 
-    if (jQuery(this).hasClass("js-weight-trigger")) {
+    if (settingsType == "weight") {
 
         var item = 0;
         while (item <= 300) {
-            setOptionsList.append("<button class='p-3 w-100 border-bottom border-silver' data-dismiss='actionsheet'>" + item + "</button>");
+            setOptionsList.append("<button class='p-3 w-100 border-bottom border-silver' id='settings-set-" + item + "' data-dismiss='modal' data-corresponding-post-id='" + postId + "' data-settings-type=" + settingsType + ">" + item + "</button>");
 
-            if (item == currentSet) {
-                setOptionsList.find("button").last().addClass("is-set");
+            if (item == currentSetting) {
+                setOptionsList.find("[data-settings-type]").last().addClass("is-set");
             }
 
             if (item < 30) {
@@ -106,10 +97,10 @@ jQuery(document).on("click", ".js-set-options-container button", function () {
     } else {
         var item = 0;
         while (item <= 20) {
-            setOptionsList.append("<button class='p-3 w-100 border-bottom border-silver' data-dismiss='actionsheet'>" + item + "</button>");
+            setOptionsList.append("<button class='p-3 w-100 border-bottom border-silver' id='settings-set-" + item + "' data-dismiss='modal' data-corresponding-post-id='" + postId + "' data-settings-type=" + settingsType + ">" + item + "</button>");
 
-            if (item == currentSet) {
-                setOptionsList.find("button").last().addClass("is-set");
+            if (item == currentSetting) {
+                setOptionsList.find("[data-settings-type]").last().addClass("is-set");
             }
 
             item += 1;
@@ -117,34 +108,36 @@ jQuery(document).on("click", ".js-set-options-container button", function () {
     }
 
     setOptionsList.scrollTop(0);
-    setOptionsList.scrollTop( setOptionsList.find("button.is-set").position().top - 70);
+    setOptionsList.scrollTop( setOptionsList.find("[data-settings-type].is-set").position().top - 70);
 
 });
 
-jQuery(document).on("click", ".js-set-options-list-1 button", function () {
+jQuery(document).on("click", "[id^='settings-set-']", function () {
     "use strict";
 
-    var setOptionsContainer = jQuery(this).closest("[data-post-id]").find(".js-set-options-container");
-    setOptionsContainer.find("button.is-setting").removeClass("is-setting").find(".js-value").text(jQuery(this).text());
+    var postId = jQuery(this).attr("data-corresponding-post-id");
+    var settingsType = jQuery(this).attr("data-settings-type");
 
-    var setSets = setOptionsContainer.find(".js-sets-trigger .js-value").text();
-    var setReps = setOptionsContainer.find(".js-reps-trigger .js-value").text();
-    var setWeight = setOptionsContainer.find(".js-weight-trigger .js-value").text();
-    var completeSet = setSets + "×" + setReps + "×" + setWeight;
+    jQuery("#" + settingsType + "-" + postId).text(jQuery(this).text());
+
+    var setSets = jQuery("#sets-" + postId).text();
+    var setReps = jQuery("#reps-" + postId).text();
+    var setWeight = jQuery("#weight-" + postId).text();
+    var completeCurrentSet = setSets + "×" + setReps + "×" + setWeight;
 
     jQuery(this).addClass("is-set").siblings(".is-set").removeClass("is-set");
-    jQuery(this).closest("[data-post-id]").find("input[name='comment']").attr("value", completeSet);
-    jQuery(this).closest("[data-post-id]").find(".js-set-settings").html(completeSet);
+    jQuery("#comment-" + postId).attr("value", completeCurrentSet);
+    jQuery("#settings-" + postId).html(completeCurrentSet);
 
     setTimeout(function () {
-        jQuery(this).closest("[data-post-id]").find("[id^='actionsheet-']").removeClass("is-shown");
-        jQuery(".js-set-options-list-1 .webkit-overflow-scroll-bug").removeClass("is-hidden");
-        jQuery(".js-set-options-list-1 button").remove();
+        jQuery("#modal-settings-" + postId).removeClass("is-shown");
+        jQuery("#overflow-scroll-bug-" + postId).removeClass("is-hidden");
+        jQuery("#modal-settings-list-" + postId).find("[id^='settings-set-']").remove();
     }, 250);
 
     var submitData = function () {
         if (!jQuery("body").hasClass("js-is-submitting")) {
-            setOptionsContainer.closest("[data-post-id]").find(".comment-respond input[type='submit']").trigger("click");
+            jQuery("#commentform-" + postId).find("input[type='submit']").trigger("click");
             jQuery("body").addClass("js-is-submitting");
             setTimeout(function () {
                 jQuery("body").removeClass("js-is-submitting");
@@ -156,19 +149,3 @@ jQuery(document).on("click", ".js-set-options-list-1 button", function () {
 
     submitData();
 });
-
-function hideActionSheet() {
-    "use strict";
-
-    jQuery(".actionsheet.is-shown").removeClass("is-shown").one("animationend", function (e) {
-        jQuery(this).addClass("is-hidden");
-    });
-}
-
-function hideOverlay() {
-    "use strict";
-
-    jQuery("#overlay-backdrop").fadeOut("fast", function () {
-        jQuery("body").append(jQuery("#overlay-backdrop"));
-    });
-}

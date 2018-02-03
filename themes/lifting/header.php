@@ -13,8 +13,21 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no" />
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 
-	<link rel="apple-touch-startup-image" href="img/splash.png" />
-	<link rel="apple-touch-icon-precomposed" href="img/icon.png"/>
+	<!-- <link rel="apple-touch-startup-image" href="img/splash.png" /> -->
+	<!-- <link rel="apple-touch-icon-precomposed" href="img/icon.png"/> -->
+
+	<!-- iPhone Icons -->
+	<link href="http://cdn.madebyjesse.com/lifting-assets/ios-pwa-assets/apple-touch-icon-57x57.png" sizes="57x57" rel="apple-touch-icon">
+	<link href="http://cdn.madebyjesse.com/lifting-assets/ios-pwa-assets/apple-touch-icon-72x72.png" sizes="72x72" rel="apple-touch-icon">
+	<link href="http://cdn.madebyjesse.com/lifting-assets/ios-pwa-assets/apple-touch-icon-114x114.png" sizes="114x114" rel="apple-touch-icon">
+	<link href="http://cdn.madebyjesse.com/lifting-assets/ios-pwa-assets/apple-touch-icon-144x144.png" sizes="144x144" rel="apple-touch-icon">
+
+	<!-- iPhone Splash Screens -->
+	<link href="http://cdn.madebyjesse.com/lifting-assets/ios-pwa-assets/apple-touch-startup-image-320x460.png" media="(device-width: 320px) and (orientation: portrait)" rel="apple-touch-startup-image">
+	<link href="http://cdn.madebyjesse.com/lifting-assets/ios-pwa-assets/apple-touch-startup-image-640x1136.png" media="(device-width: 640px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+	<link href="http://cdn.madebyjesse.com/lifting-assets/ios-pwa-assets/apple-touch-startup-image-750x1334.png" media="(device-width: 750px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+	<link href="http://cdn.madebyjesse.com/lifting-assets/ios-pwa-assets/apple-touch-startup-image-1125x2436.png" media="(device-width: 1125px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+	<link href="http://cdn.madebyjesse.com/lifting-assets/ios-pwa-assets/apple-touch-startup-image-1242x2208.png" media="(device-width: 1242px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
 
 	<?php wp_head(); ?>
 </head>
@@ -26,15 +39,12 @@
 			<nav id="site-navigation" class="main-navigation p-2 p-absolute">
 				<?php if ( is_front_page() ) : ?>
 					<button type="button" id="user-toggle" class="d-block" data-toggle="modal" data-target="#sign-out-screen">
-						<svg class="d-block" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 22 22">
-						  <circle class="fill-silver" cx="11" cy="11" r="11"/>
-						  <path class="fill-black" fill-rule="nonzero" d="M12,13.041 L12,12.216 C13.102,11.595 14,10.048 14,8.5 C14,6.015 14,4 11,4 C8,4 8,6.015 8,8.5 C8,10.048 8.898,11.595 10,12.216 L10,13.041 C6.608,13.318 4,14.985 4,17 L18,17 C18,14.985 15.392,13.318 12,13.041 Z"/>
-						</svg>
+						<?php get_template_part( 'img/icon-user.svg' ); ?>
 					</button>
 				<?php elseif (is_tax()) :
 					$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
 					$parent = get_term_by( 'id', $term->parent, 'week' );
-					echo '<a href="';
+					echo '<a class="px-2" href="';
 						if ($parent) :
 							echo get_term_link($parent->slug, 'week') . '" title="' . $parent->name . '">';
 						else :
@@ -53,4 +63,4 @@
 		<? endif; ?>
 	</header><!-- #masthead -->
 
-	<main id="content" class="site-main">
+	<main id="main-content" class="site-main">

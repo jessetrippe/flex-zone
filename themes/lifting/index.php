@@ -20,32 +20,23 @@ if ( is_front_page() || is_tax() ) {
 	} else {
 		echo get_queried_object()->description;
 	}
-	echo '</div><ul>';
+	echo '</div>';
 	$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
 	if ($term->parent == 0) {
+		echo '<ul>';
 		wp_list_categories('taxonomy=week&depth=1&title_li=&child_of=' . $term->term_id);
+		echo '</ul>';
 	} else {
-		get_template_part( 'partials/day' );
+		get_template_part( 'partials/list' );
+		get_template_part( 'partials/modals' );
 	}
-	echo '</ul>';
 
 } else {
-
 	if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-
-		<article id="post-<?php the_ID(); ?>" <?php post_class("p-2"); ?>>
-			<header class="entry-header">
-				<?php the_title( '<h1 class="h4 mb-3">', '</h1>' ); ?>
-			</header><!-- .entry-header -->
-
-			<div class="entry-content">
-				<?php the_content(); ?>
-			</div><!-- .entry-content -->
-
+		<article id="post-<?php the_ID(); ?>">
+			<?php the_content(); ?>
 		</article><!-- #post-<?php the_ID(); ?> -->
-
 	<?php endwhile;
-
 	else :
 		echo '<h1>Page cannot be found</h1>';
 	endif;
