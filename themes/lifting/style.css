@@ -505,26 +505,8 @@ button.is-set:before,
     ), var(--aqua);
 }
 
-.exercises td {
+.exercises td:not(:first-child):not(:last-child) {
   padding: 0 1rem;
-}
-
-.exercises td:first-child {
-  padding: 0;
-  background: linear-gradient(
-      rgba(0, 0, 0, 0.2),
-      rgba(0, 0, 0, 0.2)
-    ), var(--aqua);
-  mix-blend-mode: hard-light;
-}
-
-.exercises td:first-child img {
-  filter: grayscale(80%);
-  mix-blend-mode: hard-light;
-}
-
-.exercises td:last-child {
-  padding-left: 0;
 }
 
 .table-clickable-rows tr {
