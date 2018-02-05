@@ -31,33 +31,33 @@
 
 <body <?php body_class(); ?>>
 
-	<header id="masthead" class="site-header border-bottom bg-white">
-		<?php if ( is_front_page() || is_tax() ) : ?>
-			<nav id="site-navigation" class="main-navigation p-2 p-absolute">
-				<?php if ( is_front_page() ) : ?>
-					<button type="button" id="user-toggle" class="d-block" data-toggle="modal" data-target="#sign-out-screen">
-						<?php get_template_part( 'img/icon-user.svg' ); ?>
-					</button>
-				<?php elseif (is_tax()) :
-					$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
-					$parent = get_term_by( 'id', $term->parent, 'week' );
-					echo '<a class="px-2" href="';
-						if ($parent) :
-							echo get_term_link($parent->slug, 'week') . '" title="' . $parent->name . '">';
-						else :
-							echo bloginfo(url) . '" title="Home">';
-						endif;
-					echo '&nbsp;</a>';
-				endif;
-				echo '</nav><div class="py-2 h6 m-0 text-uppercase text-center">';
-					if( is_front_page() ) {
-						bloginfo('name');
-					} elseif (is_tax()) {
-						echo $term->name;
-					}
-				?>
-			</div>
-		<? endif; ?>
-	</header><!-- #masthead -->
+	<?php if ( is_front_page() || is_tax() ) : ?>
+		<header id="masthead" class="site-header border-bottom bg-white">
+				<nav id="site-navigation" class="main-navigation p-2 p-absolute">
+					<?php if ( is_front_page() ) : ?>
+						<button type="button" id="user-toggle" class="d-block" data-toggle="modal" data-target="#sign-out-screen">
+							<?php get_template_part( 'img/icon-user.svg' ); ?>
+						</button>
+					<?php elseif (is_tax()) :
+						$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
+						$parent = get_term_by( 'id', $term->parent, 'week' );
+						echo '<a class="px-2" href="';
+							if ($parent) :
+								echo get_term_link($parent->slug, 'week') . '" title="' . $parent->name . '">';
+							else :
+								echo bloginfo(url) . '" title="Home">';
+							endif;
+						echo '&nbsp;</a>';
+					endif;
+					echo '</nav><div class="py-2 h6 m-0 text-uppercase text-center">';
+						if( is_front_page() ) {
+							bloginfo('name');
+						} elseif (is_tax()) {
+							echo $term->name;
+						}
+					?>
+				</div>
+		</header><!-- #masthead -->
+	<? endif; ?>
 
 	<main id="main-content" class="site-main">
