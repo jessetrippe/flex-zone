@@ -1,36 +1,28 @@
-<div id="password-reset-form" class="password-reset-form-container px-4">
 
-	<?php get_template_part( 'img/logo.svg' ); ?>
+<?php get_template_part( 'img/logo.svg' ); ?>
 
-	<?php if ( $attributes['show_title'] ) : ?>
-		<h3><?php _e( 'Pick a New Password', 'personalize-login' ); ?></h3>
+<form name="resetpassform" id="resetpassform" action="<?php echo site_url( 'wp-login.php?action=resetpass' ); ?>" method="post" autocomplete="off">
+	<input type="hidden" id="user_login" name="rp_login" value="<?php echo esc_attr( $attributes['login'] ); ?>" autocomplete="off" />
+	<input type="hidden" name="rp_key" value="<?php echo esc_attr( $attributes['key'] ); ?>" />
+
+	<?php if ( count( $attributes['errors'] ) > 0 ) : ?>
+		<?php foreach ( $attributes['errors'] as $error ) : ?>
+			<p class="alert alert-error">
+				<?php echo $error; ?>
+			</p>
+		<?php endforeach; ?>
 	<?php endif; ?>
 
-	<form name="resetpassform" id="resetpassform" action="<?php echo site_url( 'wp-login.php?action=resetpass' ); ?>" method="post" autocomplete="off">
-		<input type="hidden" id="user_login" name="rp_login" value="<?php echo esc_attr( $attributes['login'] ); ?>" autocomplete="off" />
-		<input type="hidden" name="rp_key" value="<?php echo esc_attr( $attributes['key'] ); ?>" />
+	<p class="mb-2">
+		<input class="text-input" type="password" name="pass1" id="pass1" placeholder="New password" autocomplete="off" required pattern="^.{5,20}$" title="Password must be at least 5 characters and at most 20 characters.">
+	</p>
+	<p class="mb-2">
+		<input type="password" name="pass2" id="pass2" class="text-input" value="" autocomplete="off" />
+	</p>
 
-		<?php if ( count( $attributes['errors'] ) > 0 ) : ?>
-			<?php foreach ( $attributes['errors'] as $error ) : ?>
-				<p>
-					<?php echo $error; ?>
-				</p>
-			<?php endforeach; ?>
-		<?php endif; ?>
+	<p class="description mb-3"><?php echo wp_get_password_hint(); ?></p>
 
-		<p>
-			<label for="pass1"><?php _e( 'New password', 'personalize-login' ) ?></label>
-			<input type="password" name="pass1" id="pass1" class="w-100 border border-silver py-1 px-2" size="20" value="" autocomplete="off" />
-		</p>
-		<p>
-			<label for="pass2"><?php _e( 'Repeat new password', 'personalize-login' ) ?></label>
-			<input type="password" name="pass2" id="pass2" class="w-100 border border-silver py-1 px-2" size="20" value="" autocomplete="off" />
-		</p>
-
-		<p class="description"><?php echo wp_get_password_hint(); ?></p>
-
-		<p class="resetpass-submit">
-			<input type="submit" name="submit" id="resetpass-button" class="btn btn-block" value="<?php _e( 'Reset Password', 'personalize-login' ); ?>" />
-		</p>
-	</form>
-</div>
+	<p class="resetpass-submit mb-5">
+		<input type="submit" name="submit" id="resetpass-button" class="btn btn-block" value="Reset password" />
+	</p>
+</form>

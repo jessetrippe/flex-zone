@@ -20,7 +20,7 @@ License: GNU General Public License v2 or later
 :root {
   /* Fonts */
   --base-font-family: 'Roboto', 'Helvetica Neue', Helvetica, sans-serif;
-  --headings-font-family: 'Roboto Condensed', 'Roboto', 'Helvetica Neue', Helvetica, sans-serif;
+  --headings-font-family: 'Roboto', 'Helvetica Neue', Helvetica, sans-serif;
 
   /* Sizing */
   --base-font-size: 15px;
@@ -128,7 +128,7 @@ body {
 .display-4 {
     font-style: italic;
     font-family: var(--headings-font-family);
-    font-weight: 700;
+    font-weight: 900;
     margin: 0;
 }
 
@@ -620,6 +620,7 @@ button.is-set:before,
   display: block;
   width: 100%;
   background: #fff;
+  color: var(--base-font-color);
 }
 
 label {

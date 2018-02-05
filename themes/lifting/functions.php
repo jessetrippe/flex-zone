@@ -55,7 +55,7 @@ function scripts() {
     /**
      * Production styles and scripts.
      */
-    wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Roboto+Condensed:700i|Roboto:400', false, time(), 'screen' );
+    wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i', false, time(), 'screen' );
     wp_enqueue_style( 'lifting-style', get_template_directory_uri() . '/style.css', false, time(), 'screen' );
     wp_deregister_script( 'jquery' );
     wp_register_script( 'jquery', includes_url( '/js/jquery/jquery.js' ), false, time(), true );

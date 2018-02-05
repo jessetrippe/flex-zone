@@ -33,7 +33,7 @@ if ( is_front_page() || is_tax() ) {
 
 } else {
 	if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-		<article id="post-<?php the_ID(); ?>">
+		<article id="post-<?php the_ID(); ?>" class="px-4">
 			<?php the_content(); ?>
 		</article><!-- #post-<?php the_ID(); ?> -->
 	<?php endwhile;

@@ -13,9 +13,6 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no" />
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 
-	<!-- <link rel="apple-touch-startup-image" href="img/splash.png" /> -->
-	<!-- <link rel="apple-touch-icon-precomposed" href="img/icon.png"/> -->
-
 	<!-- iPhone Icons -->
 	<link href="http://cdn.madebyjesse.com/lifting-assets/ios-pwa-assets/apple-touch-icon-57x57.png" sizes="57x57" rel="apple-touch-icon">
 	<link href="http://cdn.madebyjesse.com/lifting-assets/ios-pwa-assets/apple-touch-icon-72x72.png" sizes="72x72" rel="apple-touch-icon">
