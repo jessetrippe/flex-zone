@@ -1,7 +1,7 @@
 
 <?php get_template_part( 'img/logo.svg' ); ?>
 
-<form name="resetpassform" id="resetpassform" action="<?php echo site_url( 'wp-login.php?action=resetpass' ); ?>" method="post" autocomplete="off">
+<form action="<?php echo site_url( 'wp-login.php?action=resetpass' ); ?>" method="post" autocomplete="off">
 	<input type="hidden" id="user_login" name="rp_login" value="<?php echo esc_attr( $attributes['login'] ); ?>" autocomplete="off" />
 	<input type="hidden" name="rp_key" value="<?php echo esc_attr( $attributes['key'] ); ?>" />
 

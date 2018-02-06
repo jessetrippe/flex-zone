@@ -9,7 +9,7 @@
 	<?php endforeach; ?>
 <?php endif; ?>
 
-<form id="signupform" action="<?php echo wp_registration_url(); ?>" method="post">
+<form action="<?php echo wp_registration_url(); ?>" method="post">
 	<p class="mb-2">
 		<input class="text-input" type="email" name="email" id="email" placeholder="Email address" required>
 	</p>
