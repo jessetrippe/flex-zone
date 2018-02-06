@@ -17,7 +17,7 @@
 		<input class="text-input" type="password" name="pass1" id="pass1" placeholder="New password" autocomplete="off" required pattern="^.{5,20}$" title="Password must be at least 5 characters and at most 20 characters.">
 	</p>
 	<p class="mb-2">
-		<input type="password" name="pass2" id="pass2" class="text-input" value="" autocomplete="off" />
+		<input type="password" name="pass2" id="pass2" class="text-input" placeholder="Repeat new password" autocomplete="off" required>
 	</p>
 
 	<p class="description mb-3"><?php echo wp_get_password_hint(); ?></p>

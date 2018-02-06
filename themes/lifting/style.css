@@ -358,11 +358,11 @@ body {
 .fill-black { fill: var(--black); }
 .fill-white { fill: var(--white); }
 
-.main-navigation a {
+.nav-back {
   position: relative;
 }
 
-.main-navigation a:before,
+.nav-back:before,
 .cat-item a:after {
   content: "";
   position: absolute;

@@ -35,13 +35,13 @@
 		<header id="masthead" class="site-header border-bottom bg-white">
 				<nav id="site-navigation" class="main-navigation p-2 p-absolute">
 					<?php if ( is_front_page() ) : ?>
-						<button type="button" id="user-toggle" class="d-block" data-toggle="modal" data-target="#sign-out-screen">
+						<a href="/sign-out/">
 							<?php get_template_part( 'img/icon-user.svg' ); ?>
-						</button>
+						</a>
 					<?php elseif (is_tax()) :
 						$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
 						$parent = get_term_by( 'id', $term->parent, 'week' );
-						echo '<a class="px-2" href="';
+						echo '<a class="px-2 nav-back" href="';
 							if ($parent) :
 								echo get_term_link($parent->slug, 'week') . '" title="' . $parent->name . '">';
 							else :

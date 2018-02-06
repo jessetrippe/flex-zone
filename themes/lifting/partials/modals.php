@@ -19,9 +19,9 @@
 			<span class="font-weight-bold">Weight</span>
 			<span class="ml-auto btn-link" id="weight-<?php the_ID(); ?>"></span>
 		</button>
-	<div class="px-3 pb-3 pt-3">
-		<button class="btn btn-block" data-dismiss="modal">Close</button>
-	</div>
+		<div class="px-3 pb-3 pt-3">
+			<button class="btn btn-block" data-dismiss="modal">Close</button>
+		</div>
 	</div>
 	<div class="modal bg-white d-flex flex-column vh-100 is-hidden" id="modal-settings-<?php echo the_ID(); ?>">
 		<div class="d-flex p-2">
