@@ -24,7 +24,14 @@ if ( is_front_page() || is_tax() ) {
 	$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
 	if ($term->parent == 0) {
 		echo '<ul>';
-		wp_list_categories('taxonomy=week&depth=1&title_li=&child_of=' . $term->term_id);
+		wp_list_categories( array(
+			'orderby'   => 'id',
+			'depth'     => 1,
+			'child_of'  => '',
+			'title_li'  => '',
+			'taxonomy'  => 'week',
+			'child_of'  => $term->term_id
+		) );
 		echo '</ul>';
 	} else {
 		get_template_part( 'partials/list' );
