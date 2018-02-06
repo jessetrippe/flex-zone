@@ -7,23 +7,21 @@
 			</video>
 			<h2 class="video-title"><?php echo the_title(); ?></h2>
 		</div>
-		<div class="px-3 mb-auto">
-			<button class="d-flex py-3 w-100 border-bottom" id="settings-sets-<?php echo the_ID(); ?>" data-toggle="modal" data-target="#modal-settings-<?php echo the_ID(); ?>" data-settings-type="sets">
-				<span class="font-weight-bold">Sets</span>
-				<span class="ml-auto btn-link" id="sets-<?php the_ID(); ?>"></span>
-			</button>
-			<button class="d-flex py-3 w-100 border-bottom" id="settings-reps-<?php echo the_ID(); ?>" data-toggle="modal" data-target="#modal-settings-<?php echo the_ID(); ?>" data-settings-type="reps">
-				<span class="font-weight-bold">Reps</span>
-				<span class="ml-auto btn-link" id="reps-<?php the_ID(); ?>"></span>
-			</button>
-			<button class="d-flex py-3 w-100 border-bottom" id="settings-weight-<?php echo the_ID(); ?>" data-toggle="modal" data-target="#modal-settings-<?php echo the_ID(); ?>" data-settings-type="weight">
-				<span class="font-weight-bold">Weight</span>
-				<span class="ml-auto btn-link" id="weight-<?php the_ID(); ?>"></span>
-			</button>
-		</div>
-		<div class="p-3">
-			<button class="btn btn-block" data-dismiss="modal">Close</button>
-		</div>
+		<button class="d-flex p-3 border-bottom" id="settings-sets-<?php echo the_ID(); ?>" data-toggle="modal" data-target="#modal-settings-<?php echo the_ID(); ?>" data-settings-type="sets">
+			<span class="font-weight-bold">Sets</span>
+			<span class="ml-auto btn-link" id="sets-<?php the_ID(); ?>"></span>
+		</button>
+		<button class="d-flex p-3 border-bottom" id="settings-reps-<?php echo the_ID(); ?>" data-toggle="modal" data-target="#modal-settings-<?php echo the_ID(); ?>" data-settings-type="reps">
+			<span class="font-weight-bold">Reps</span>
+			<span class="ml-auto btn-link" id="reps-<?php the_ID(); ?>"></span>
+		</button>
+		<button class="d-flex p-3 border-bottom" id="settings-weight-<?php echo the_ID(); ?>" data-toggle="modal" data-target="#modal-settings-<?php echo the_ID(); ?>" data-settings-type="weight">
+			<span class="font-weight-bold">Weight</span>
+			<span class="ml-auto btn-link" id="weight-<?php the_ID(); ?>"></span>
+		</button>
+	<div class="px-3 pb-3 pt-3">
+		<button class="btn btn-block" data-dismiss="modal">Close</button>
+	</div>
 	</div>
 	<div class="modal bg-white d-flex flex-column vh-100 is-hidden" id="modal-settings-<?php echo the_ID(); ?>">
 		<div class="d-flex p-2">
