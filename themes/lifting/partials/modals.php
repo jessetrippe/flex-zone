@@ -3,7 +3,7 @@
 		<button class="ml-auto btn-link p-2" data-dismiss="modal">Done</button>
 		<div class="p-relative">
 			<video muted playsinline loop class="w-100 d-block" id="video-<?php echo the_ID(); ?>" title="<?php echo the_title(); ?>">
-				<?php echo '<source src="http://cdn.madebyjesse.com/lifting-assets/' . $post->post_name . '.mp4" type="video/mp4">'; ?>
+				<?php echo '<source src="//jessetrippe-cdn-173419.appspot.com/flex-zone/videos/' . $post->post_name . '.mp4" type="video/mp4">'; ?>
 			</video>
 			<h2 class="video-title"><?php echo the_title(); ?></h2>
 		</div>
