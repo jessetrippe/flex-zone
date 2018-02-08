@@ -31,33 +31,40 @@
 
 <body <?php body_class(); ?>>
 
-	<?php if ( is_front_page() || is_tax() ) : ?>
-		<header id="masthead" class="site-header border-bottom bg-white">
-				<nav id="site-navigation" class="main-navigation p-2 p-absolute">
-					<?php if ( is_front_page() ) : ?>
-						<a href="/sign-out/">
-							<?php get_template_part( 'img/icon-user.svg' ); ?>
-						</a>
-					<?php elseif (is_tax()) :
-						$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
-						$parent = get_term_by( 'id', $term->parent, 'week' );
-						echo '<a class="px-2 nav-back" href="';
-							if ($parent) :
-								echo get_term_link($parent->slug, 'week') . '" title="' . $parent->name . '">';
-							else :
-								echo bloginfo(url) . '" title="Home">';
-							endif;
-						echo '&nbsp;</a>';
-					endif;
-					echo '</nav><div class="py-2 h6 m-0 text-uppercase text-center">';
-						if( is_front_page() ) {
-							bloginfo('name');
-						} elseif (is_tax()) {
-							echo $term->name;
-						}
-					?>
-				</div>
-		</header><!-- #masthead -->
-	<? endif; ?>
+	<header id="masthead" class="site-header">
+		<nav id="site-navigation" class="main-navigation mb-3 pb-3 d-flex">
+			<?php
+				if ( is_front_page() ) :
+					echo '<a class="p-3 mr-auto" href="/sign-out/" title="Sign out">';
+						echo get_template_part( 'img/icon-user.svg' );
+					echo '</a>';
+				elseif (is_tax()) :
+					$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
+					$parent = get_term_by( 'id', $term->parent, 'week' );
+					echo '<a class="p-3" href="';
+						if ($parent) :
+							echo get_term_link($parent->slug, 'week') . '" title="' . $parent->name . '">';
+						else :
+							echo bloginfo(url) . '" title="Home">';
+						endif;
+					echo get_template_part( 'img/icon-arrow-left.svg' ) . '</a>';
+				elseif (is_page('sign-out')) :
+					echo '<a class="p-3 ml-auto" href="';
+					echo bloginfo(url) . '" title="Home">';
+					echo get_template_part( 'img/icon-arrow-right.svg' );
+					echo '</a>';
+				endif;
+				echo '</nav><h1 class="page-title text-white h1 px-3 pb-1">';
+					if( is_front_page() ) {
+						echo 'Welcome';
+					} elseif (is_tax()) {
+						echo $term->name;
+					} else {
+						echo the_title();
+					}
+				echo '</h1>';
+			?>
+		</nav>
+	</header><!-- #masthead -->
 
 	<main id="main-content" class="site-main">

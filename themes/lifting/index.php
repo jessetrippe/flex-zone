@@ -7,32 +7,17 @@ get_header();
 
 if ( is_front_page() || is_tax() ) {
 
-	echo '<div class="p-5 text-center"><h3 class="h3 text-uppercase font-weight-bold mb-2">';
+	$taxonomy_name = 'week';
+	$term_id = get_queried_object()->term_id;
 
-	if ( is_front_page() ) {
-		echo 'Welcome';
-	} else {
-		echo get_queried_object()->name;
-	}
-	echo '</h3>';
-	if ( is_front_page() ) {
-		echo get_bloginfo('description');
-	} else {
-		echo get_queried_object()->description;
-	}
-	echo '</div>';
-	$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
-	if ($term->parent == 0) {
-		echo '<ul>';
-		wp_list_categories( array(
-			'orderby'   => 'id',
-			'depth'     => 1,
-			'child_of'  => '',
-			'title_li'  => '',
-			'taxonomy'  => 'week',
-			'child_of'  => $term->term_id
-		) );
-		echo '</ul>';
+	$terms = get_terms($taxonomy_name, array('parent' => $term_id,) );
+	if ($terms) {
+		foreach($terms as $term){
+			echo '<a class="d-flex p-3 h5 border-bottom align-items-center" href="' . get_term_link($term) . '">';
+			echo $term->name;
+			echo get_template_part( 'img/icon-arrow-right-alt.svg' );
+			echo '</a>';
+		}
 	} else {
 		get_template_part( 'partials/list' );
 		get_template_part( 'partials/modals' );
@@ -40,9 +25,9 @@ if ( is_front_page() || is_tax() ) {
 
 } else {
 	if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-		<article id="post-<?php the_ID(); ?>" class="px-4">
+		<article class="px-4">
 			<?php the_content(); ?>
-		</article><!-- #post-<?php the_ID(); ?> -->
+		</article>
 	<?php endwhile;
 	else :
 		echo '<h1>Page cannot be found</h1>';

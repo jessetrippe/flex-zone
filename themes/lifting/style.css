@@ -44,7 +44,7 @@ License: GNU General Public License v2 or later
   --green-alt: #41FE87;
   --black: #212529;
   --white: #fff;
-  --silver: #ddd;
+  --silver: #EFF0F1;
   --gray: #868e96;
 
   --base-font-color: var(--black);
@@ -93,7 +93,7 @@ input[type="checkbox"] {
   -webkit-appearance: checkbox;
 }
 
-input[type="radoi"] {
+input[type="radio"] {
   -webkit-appearance: radio;
 }
 
@@ -102,18 +102,45 @@ a {
   color: inherit;
 }
 
+.text-link,
+a[href] {
+  color: #4658AE;
+  font-weight: 700;
+  cursor: pointer;
+}
+
 body {
   color: var(--base-font-color);
   font: var(--base-font-weight) var(--base-font-size)/var(--base-line-height-ratio) var(--base-font-family);
+  background-color: var(--silver);
 }
 
-.site-header {
-  position: fixed;
-  width: 100%;
+.site-header,
+.modal-header {
+  background-image: url(/wp-content/themes/lifting/img/circles-bg.svg);
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center top;
+  margin-bottom: 1rem;
+  box-shadow: inset 0 -.5rem .5rem 0 rgba(0,0,0,.1);
+}
+
+.modal-body {
+  flex: 1;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
+.page-title {
+  text-shadow: 1px 1px 2px rgba(0,0,0,.25);
 }
 
 .site-main {
-  border-top: 0 solid transparent;
+  background: #fff;
+}
+
+.site-main > a.d-block:not(:last-child) {
+  border-bottom: 1px solid #EFF0F1;
 }
 
 .h1,
@@ -126,9 +153,9 @@ body {
 .display-2,
 .display-3,
 .display-4 {
-    font-style: italic;
+    font-style: normal;
     font-family: var(--headings-font-family);
-    font-weight: 900;
+    font-weight: 700;
     margin: 0;
 }
 
@@ -144,7 +171,7 @@ body {
 .display-4 { font-size: 2.625rem; }
 
 .small, small {
-  font-size: 80%;
+  font-size: 86.6666666%;
 }
 
 .float-left { float: left; }
@@ -351,42 +378,13 @@ body {
 .border-x { border-left-width: 1px; border-right-width: 1px; }
 
 .bg-white { background-color: #fff; }
+.text-white { color: #fff; }
 
 .fill-green { fill: var(--green); }
 .fill-blue { fill: var(--blue); }
 .fill-silver { fill: var(--silver); }
 .fill-black { fill: var(--black); }
 .fill-white { fill: var(--white); }
-
-.nav-back {
-  position: relative;
-}
-
-.nav-back:before,
-.cat-item a:after {
-  content: "";
-  position: absolute;
-  left: 2px;
-  top: 4.5px;
-  height: .5rem;
-  width: .5rem;
-  border-color: var(--base-icon-action-color);
-  border-top: 2px solid;
-  border-right: 2px solid;
-  transform: rotate(225deg);
-}
-
-.cat-item a:after {
-  margin-top: -3px;
-  border-color: var(--green);
-  left: auto;
-  right: 1rem;
-  top: 50%;
-  transform: rotate(45deg) translateY(-50%);
-  height: .75rem;
-  width: .75rem;
-  border-width: 3px;
-}
 
 .modal {
   bottom: 0;
@@ -395,12 +393,12 @@ body {
   right: 0;
   top: 100%;
   z-index: 1100;
-}
-
-.modal {
   animation: slideOutDown .25s;
-  overflow-y: scroll;
   width: 100%;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
 .modal.is-shown {
@@ -432,8 +430,8 @@ button {
   font: inherit;
   border-radius: 8px;
   padding: 1rem;
-  background: #98ca14;
-  color: #fff;
+  background: #4658AE;
+  color: #fff !important;
   padding: .75rem 1rem;
   cursor: pointer;
 }
@@ -463,13 +461,6 @@ button {
   margin-top: .25rem;
 }
 
-.btn-link,
-a[href] {
-  color: #98ca14;
-  font-weight: 700;
-  cursor: pointer;
-}
-
 button.is-set {
   position: relative;
 }
@@ -489,76 +480,9 @@ button.is-set:before,
   right: 1.5rem;
 }
 
-.cat-item a {
-  color: #fff;
-  display: block;
-  font: italic 700 26.25px/1.33333333334 var(--headings-font-family);
-  padding: 3rem;
-  position: relative;
-  text-align: center;
-  text-transform: uppercase;
-  color: var(--green);
-  mix-blend-mode: multiply;
-  background: linear-gradient(
-      rgba(0, 0, 0, 0.1),
-      rgba(0, 0, 0, 0.1)
-    ), var(--aqua);
-}
-
-.exercises td:not(:first-child):not(:last-child) {
-  padding: 0 1rem;
-}
-
 .table-clickable-rows tr {
   cursor: pointer;
 }
-
-.cat-item a:before {
-  z-index: -1;
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  filter: grayscale(100%);
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  mix-blend-mode: multiply;
-}
-
-.cat-item-1 a:before { background-image: url('img/gym-photo-01.jpg'); }
-.cat-item-2 a:before { background-image: url('img/gym-photo-02.jpg'); }
-.cat-item-3 a:before { background-image: url('img/gym-photo-03.jpg'); }
-.cat-item-4 a:before { background-image: url('img/gym-photo-04.jpg'); }
-.cat-item-5 a:before { background-image: url('img/gym-photo-05.jpg'); }
-.cat-item-6 a:before { background-image: url('img/gym-photo-06.jpg'); }
-.cat-item-7 a:before { background-image: url('img/gym-photo-07.jpg'); }
-.cat-item-8 a:before { background-image: url('img/gym-photo-08.jpg'); }
-.cat-item-9 a:before { background-image: url('img/gym-photo-09.jpg'); }
-.cat-item-10 a:before { background-image: url('img/gym-photo-10.jpg'); }
-.cat-item-11 a:before { background-image: url('img/gym-photo-11.jpg'); }
-.cat-item-12 a:before { background-image: url('img/gym-photo-12.jpg'); }
-.cat-item-13 a:before { background-image: url('img/gym-photo-13.jpg'); }
-.cat-item-14 a:before { background-image: url('img/gym-photo-14.jpg'); }
-.cat-item-15 a:before { background-image: url('img/gym-photo-15.jpg'); }
-.cat-item-16 a:before { background-image: url('img/gym-photo-16.jpg'); }
-.cat-item-17 a:before { background-image: url('img/gym-photo-17.jpg'); }
-.cat-item-18 a:before { background-image: url('img/gym-photo-18.jpg'); }
-.cat-item-19 a:before { background-image: url('img/gym-photo-19.jpg'); }
-.cat-item-20 a:before { background-image: url('img/gym-photo-20.jpg'); }
-.cat-item-21 a:before { background-image: url('img/gym-photo-21.jpg'); }
-.cat-item-22 a:before { background-image: url('img/gym-photo-22.jpg'); }
-.cat-item-23 a:before { background-image: url('img/gym-photo-23.jpg'); }
-.cat-item-24 a:before { background-image: url('img/gym-photo-24.jpg'); }
-.cat-item-25 a:before { background-image: url('img/gym-photo-25.jpg'); }
-.cat-item-26 a:before { background-image: url('img/gym-photo-26.jpg'); }
-.cat-item-27 a:before { background-image: url('img/gym-photo-27.jpg'); }
-.cat-item-28 a:before { background-image: url('img/gym-photo-28.jpg'); }
-.cat-item-29 a:before { background-image: url('img/gym-photo-29.jpg'); }
-.cat-item-30 a:before { background-image: url('img/gym-photo-30.jpg'); }
-.cat-item-31 a:before { background-image: url('img/gym-photo-31.jpg'); }
 
 .webkit-overflow-scroll-bug {
   height: 100vh;
