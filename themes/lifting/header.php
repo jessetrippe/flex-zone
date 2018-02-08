@@ -32,13 +32,13 @@
 <body <?php body_class(); ?>>
 
 	<header id="masthead" class="site-header">
-		<nav id="site-navigation" class="main-navigation mb-3 pb-3 d-flex">
+		<nav id="site-navigation" class="main-navigation d-flex">
 			<?php
-				if ( is_front_page() ) :
+				if ( is_front_page() ) {
 					echo '<a class="p-3 mr-auto" href="/sign-out/" title="Sign out">';
 						echo get_template_part( 'img/icon-user.svg' );
 					echo '</a>';
-				elseif (is_tax()) :
+				} elseif (is_tax()) {
 					$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
 					$parent = get_term_by( 'id', $term->parent, 'week' );
 					echo '<a class="p-3" href="';
@@ -48,21 +48,24 @@
 							echo bloginfo(url) . '" title="Home">';
 						endif;
 					echo get_template_part( 'img/icon-arrow-left.svg' ) . '</a>';
-				elseif (is_page('sign-out')) :
+				} elseif (is_page('sign-out')) {
 					echo '<a class="p-3 ml-auto" href="';
 					echo bloginfo(url) . '" title="Home">';
 					echo get_template_part( 'img/icon-arrow-right.svg' );
 					echo '</a>';
-				endif;
-				echo '</nav><h1 class="page-title text-white h1 px-3 pb-1">';
+				}
+			?>
+		</nav>
+			<?php
+				if (!is_page('sign-out')) {
+					echo '<h1 class="text-white h1 px-3 pb-1 mt-4">';
 					if( is_front_page() ) {
 						echo 'Welcome';
 					} elseif (is_tax()) {
 						echo $term->name;
-					} else {
-						echo the_title();
 					}
-				echo '</h1>';
+					echo '</h1>';
+				}
 			?>
 		</nav>
 	</header><!-- #masthead -->

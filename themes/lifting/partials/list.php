@@ -1,5 +1,5 @@
 
-<table class="table-clickable-rows border-bottom">
+<table class="table-clickable-rows border-bottom mt-3 bg-white">
 	<tbody>
 		<?php while ( have_posts() ) : the_post(); ?>
 			<tr <?php post_class(); ?> id="post-<?php echo the_ID(); ?>"  data-toggle="modal" data-target="#modal-exercise-<?php echo get_the_ID() ?>">

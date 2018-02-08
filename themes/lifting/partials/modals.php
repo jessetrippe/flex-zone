@@ -1,6 +1,6 @@
 <?php rewind_posts(); while (have_posts()) : the_post(); ?>
 	<div class="modal is-hidden" id="modal-exercise-<?php echo the_ID(); ?>">
-		<div class="modal-header d-flex mb-0">
+		<div class="modal-header d-flex">
 			<button class="ml-auto p-3" data-dismiss="modal">
 				<?php echo get_template_part( 'img/icon-x.svg' ); ?>
 			</button>
@@ -13,22 +13,22 @@
 		</div>
 		<button class="d-flex p-3 border-bottom" id="settings-sets-<?php echo the_ID(); ?>" data-toggle="modal" data-target="#modal-settings-<?php echo the_ID(); ?>" data-settings-type="sets">
 			<span class="font-weight-bold">Sets</span>
-			<span class="ml-auto btn-link" data-settings-type="sets" data-display-value data-post-id="<?php the_ID(); ?>"></span>
+			<span class="ml-auto text-link" data-settings-type="sets" data-display-value data-post-id="<?php the_ID(); ?>"></span>
 		</button>
 		<button class="d-flex p-3 border-bottom" id="settings-reps-<?php echo the_ID(); ?>" data-toggle="modal" data-target="#modal-settings-<?php echo the_ID(); ?>" data-settings-type="reps">
 			<span class="font-weight-bold">Reps</span>
-			<span class="ml-auto btn-link" data-settings-type="reps" data-display-value data-post-id="<?php the_ID(); ?>"></span>
+			<span class="ml-auto text-link" data-settings-type="reps" data-display-value data-post-id="<?php the_ID(); ?>"></span>
 		</button>
 		<button class="d-flex p-3 border-bottom" id="settings-weight-<?php echo the_ID(); ?>" data-toggle="modal" data-target="#modal-settings-<?php echo the_ID(); ?>" data-settings-type="weight">
 			<span class="font-weight-bold">Weight</span>
-			<span class="ml-auto btn-link" data-settings-type="weight" data-display-value data-post-id="<?php the_ID(); ?>"></span>
+			<span class="ml-auto text-link" data-settings-type="weight" data-display-value data-post-id="<?php the_ID(); ?>"></span>
 		</button>
 		<div class="px-3 pb-3 pt-3">
 			<button class="btn btn-block" data-dismiss="modal">Close</button>
 		</div>
 	</div>
 	<div class="modal is-hidden" id="modal-settings-<?php echo the_ID(); ?>">
-		<div class="modal-header d-flex mb-0">
+		<div class="modal-header d-flex">
 			<button class="ml-auto p-3" data-dismiss="modal">
 				<?php echo get_template_part( 'img/icon-x.svg' ); ?>
 			</button>

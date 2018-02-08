@@ -12,12 +12,14 @@ if ( is_front_page() || is_tax() ) {
 
 	$terms = get_terms($taxonomy_name, array('parent' => $term_id,) );
 	if ($terms) {
+		echo '<div class="mt-3 bg-white">';
 		foreach($terms as $term){
 			echo '<a class="d-flex p-3 h5 border-bottom align-items-center" href="' . get_term_link($term) . '">';
 			echo $term->name;
 			echo get_template_part( 'img/icon-arrow-right-alt.svg' );
 			echo '</a>';
 		}
+		echo '</div>';
 	} else {
 		get_template_part( 'partials/list' );
 		get_template_part( 'partials/modals' );
