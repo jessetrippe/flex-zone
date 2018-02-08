@@ -10,7 +10,7 @@ if ( is_front_page() || is_tax() ) {
 	$taxonomy_name = 'week';
 	$term_id = get_queried_object()->term_id;
 
-	$terms = get_terms($taxonomy_name, array('parent' => $term_id,) );
+	$terms = get_terms($taxonomy_name, array('parent' => $term_id, 'orderby' => 'id',) );
 	if ($terms) {
 		echo '<div class="mt-3 bg-white">';
 		foreach($terms as $term){
