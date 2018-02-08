@@ -1,17 +1,16 @@
-jQuery(document).ready(function ($) {
+jQuery( document ).on('turbolinks:load', function() {
+
     "use strict";
 
-    $(".comment-form").ajaxForm(function () {
+    jQuery(".comment-form").ajaxForm(function () {
         // Callback message or action here.
     });
 
-    $("#main-content").css("border-top-width",$("#masthead").outerHeight());
+    jQuery("[id^='commentform-']").each(function () {
 
-    $("[id^='commentform-']").each(function () {
-
-        var postId = $(this).attr('id').replace(/commentform-/, '');
-        var postContainer = $("#post-" + postId);
-        var completeCurrentSet = $("#settings-" + postId).text().trim();
+        var postId = jQuery(this).attr('id').replace(/commentform-/, '');
+        var postContainer = jQuery("#post-" + postId);
+        var completeCurrentSet = jQuery("#settings-" + postId).text().trim();
         var fullString = completeCurrentSet.split("×");
         var unit = [
             "sets",
@@ -19,13 +18,13 @@ jQuery(document).ready(function ($) {
             "weight"
         ];
 
-        $("#comment-" + postId).attr("value", completeCurrentSet);
+        jQuery("#comment-" + postId).attr("value", completeCurrentSet);
 
-        $.each(fullString, function (index, value) {
+        jQuery.each(fullString, function (index, value) {
             if (isNaN(value) || value > 300) {
                 value = 0;
             }
-            $("#" + unit[index] + "-" + postId).html(value);
+            jQuery("[data-settings-type='" + unit[index] + "'][data-display-value][data-post-id='" + postId + "']").html(value);
         });
     });
 });
@@ -38,6 +37,9 @@ jQuery(document).on("click", "[data-dismiss]", function () {
     jQuery(this).closest(dismissType).removeClass("is-shown").one("animationend", function (e) {
         jQuery(this).addClass("is-hidden");
     });
+    if (!jQuery(".modal.is-shown").length) {
+        jQuery("body").css("overflow-y","visible");
+    }
 });
 
 jQuery(document).on("click", "[data-toggle]", function () {
@@ -45,7 +47,7 @@ jQuery(document).on("click", "[data-toggle]", function () {
 
     var targetOverlay = jQuery(jQuery(this).data("target"));
     targetOverlay.removeClass("is-hidden").addClass("is-shown");
-
+    jQuery("body").css("overflow-y","hidden");
 });
 
 jQuery(document).on("click", "[id^='post-']", function () {
@@ -70,7 +72,7 @@ jQuery(document).on("click", "[id^='settings-sets-'], [id^='settings-reps-'], [i
 
     var settingsType = jQuery(this).attr("data-settings-type");
     var postId = jQuery(this).attr('id').replace("settings-" + settingsType + "-", '');
-    var currentSetting = jQuery(this).find("[id^='" + settingsType + "']").text();
+    var currentSetting = jQuery("[data-settings-type='" + settingsType + "'][data-display-value][data-post-id='" + postId + "']").html();
     var setOptionsOverlay = jQuery("#modal-settings-" + postId);
     var setOptionsList = jQuery("#modal-settings-list-" + postId);
 
@@ -118,11 +120,11 @@ jQuery(document).on("click", "[id^='settings-set-']", function () {
     var postId = jQuery(this).attr("data-corresponding-post-id");
     var settingsType = jQuery(this).attr("data-settings-type");
 
-    jQuery("#" + settingsType + "-" + postId).text(jQuery(this).text());
+    jQuery("[data-settings-type='" + settingsType + "'][data-display-value][data-post-id='" + postId + "']").text(jQuery(this).text());
 
-    var setSets = jQuery("#sets-" + postId).text();
-    var setReps = jQuery("#reps-" + postId).text();
-    var setWeight = jQuery("#weight-" + postId).text();
+    var setSets = jQuery("[data-settings-type='sets'][data-display-value][data-post-id='" + postId + "']").html();
+    var setReps = jQuery("[data-settings-type='reps'][data-display-value][data-post-id='" + postId + "']").html();
+    var setWeight = jQuery("[data-settings-type='weight'][data-display-value][data-post-id='" + postId + "']").html();
     var completeCurrentSet = setSets + "×" + setReps + "×" + setWeight;
 
     jQuery(this).addClass("is-set").siblings(".is-set").removeClass("is-set");

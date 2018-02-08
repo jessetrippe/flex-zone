@@ -44,10 +44,11 @@ function scripts() {
      */
     wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i', false, time(), 'screen' );
     wp_enqueue_style( 'lifting-style', get_template_directory_uri() . '/style.css', false, time(), 'screen' );
+    wp_enqueue_script( 'turbolinks', get_stylesheet_directory_uri() . '/js/turbolinks.js', false, time(), false );
     wp_deregister_script( 'jquery' );
     wp_register_script( 'jquery', includes_url( '/js/jquery/jquery.js' ), false, time(), true );
     wp_enqueue_script( 'form', get_stylesheet_directory_uri() . '/js/jquery.form.js', array('jquery'), time(), true );
-    wp_enqueue_script( 'main', get_stylesheet_directory_uri() . '/js/main.js', false, time(), true );
+    wp_enqueue_script( 'main', get_stylesheet_directory_uri() . '/js/main.js', array('jquery'), time(), true );
 }
 add_action( 'wp_enqueue_scripts', 'scripts' );
 
@@ -76,7 +77,6 @@ function exercises_posttype() {
         'has_archive' => true,
         'show_in_nav_menus' => true,
         'hierarchical' => true,
-        // 'taxonomies' => array('post_tag','category'),
         'register_meta_box_cb' => 'add_exercises_metaboxes',
     ));
 }
@@ -200,16 +200,6 @@ add_filter('duplicate_comment_id', '__return_false');
  */
 add_filter('show_admin_bar', '__return_false');
 
-/**
- * Only allow sign-in users.
- */
-function members_only() {
-    if ( !is_user_logged_in() && !is_page('member-register') && !is_page('member-login') && !is_page('member-password-lost') && !is_page('member-password-reset') ) {
-       auth_redirect();
-    }
-}
-add_action( 'wp', 'members_only' );
-
 require( 'personalize-login/personalize-login.php' );
 
 /**
@@ -223,3 +213,21 @@ function add_slug_body_class( $classes ) {
     return $classes;
 }
 add_filter( 'body_class', 'add_slug_body_class' );
+
+/**
+ * Only allow sign-in users.
+ */
+function members_only() {
+    if ( !is_user_logged_in() && !is_page('member-register') && !is_page('member-login') && !is_page('member-password-lost') && !is_page('member-password-reset') ) {
+       auth_redirect();
+    }
+}
+add_action( 'wp', 'members_only' );
+
+/**
+ * Keep URL forwarding functionality after sign-in.
+ */
+function my_login_redirect( $redirect_to, $request, $user ) {
+        return $redirect_to;
+}
+add_filter( 'login_redirect', 'my_login_redirect', 10, 3 );
