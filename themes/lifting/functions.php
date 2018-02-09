@@ -223,11 +223,3 @@ function members_only() {
     }
 }
 add_action( 'wp', 'members_only' );
-
-/**
- * Keep URL forwarding functionality after sign-in.
- */
-function my_login_redirect( $redirect_to, $request, $user ) {
-        return $redirect_to;
-}
-add_filter( 'login_redirect', 'my_login_redirect', 10, 3 );
