@@ -2,14 +2,13 @@ jQuery( document ).on('turbolinks:load', function() {
 
     "use strict";
 
-    jQuery(".comment-form").ajaxForm(function () {
+    jQuery("[id^='comment-form-']").ajaxForm(function () {
         // Callback message or action here.
     });
 
-    jQuery("[id^='commentform-']").each(function () {
+    jQuery("[id^='exercise-input-']").each(function () {
 
-        var postId = jQuery(this).attr('id').replace(/commentform-/, '');
-        var postContainer = jQuery("#post-" + postId);
+        var postId = jQuery(this).attr('id').replace(/exercise-input-/, '');
         var completeCurrentSet = jQuery("#settings-" + postId).text().trim();
         var fullString = completeCurrentSet.split("×");
         var unit = [
@@ -18,7 +17,7 @@ jQuery( document ).on('turbolinks:load', function() {
             "weight"
         ];
 
-        jQuery("#comment-" + postId).attr("value", completeCurrentSet);
+        jQuery(this).attr("value", completeCurrentSet);
 
         jQuery.each(fullString, function (index, value) {
             if (isNaN(value) || value > 300) {
@@ -128,7 +127,7 @@ jQuery(document).on("click", "[id^='settings-set-']", function () {
     var completeCurrentSet = setSets + "×" + setReps + "×" + setWeight;
 
     jQuery(this).addClass("is-set").siblings(".is-set").removeClass("is-set");
-    jQuery("#comment-" + postId).attr("value", completeCurrentSet);
+    jQuery("#exercise-input-" + postId).attr("value", completeCurrentSet);
     jQuery("#settings-" + postId).html(completeCurrentSet);
 
     setTimeout(function () {
@@ -137,17 +136,6 @@ jQuery(document).on("click", "[id^='settings-set-']", function () {
         jQuery("#modal-settings-list-" + postId).find("[id^='settings-set-']").remove();
     }, 250);
 
-    var submitData = function () {
-        if (!jQuery("body").hasClass("js-is-submitting")) {
-            jQuery("#commentform-" + postId).find("input[type='submit']").trigger("click");
-            jQuery("body").addClass("js-is-submitting");
-            setTimeout(function () {
-                jQuery("body").removeClass("js-is-submitting");
-            }, 15000);
-        } else {
-            setTimeout(submitData, 1000);
-        }
-    };
-
-    submitData();
+    jQuery("#submit-container-" + postId).removeClass("is-hidden");
+    jQuery("#exercise-details-close-container-" + postId).addClass("is-hidden");
 });

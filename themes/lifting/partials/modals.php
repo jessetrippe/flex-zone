@@ -5,8 +5,8 @@
 				<?php echo get_template_part( 'img/icon-x.svg' ); ?>
 			</button>
 		</div>
-		<div class="p-relative">
-			<video muted playsinline loop class="w-100 d-block" id="video-<?php echo the_ID(); ?>" title="<?php echo the_title(); ?>">
+		<div class="p-relative video-container">
+			<video muted playsinline loop class="w-100 d-block" poster="//jessetrippe-cdn-173419.appspot.com/flex-zone/poster-images/<?php echo $post->post_name; ?>.jpg" id="video-<?php echo the_ID(); ?>" title="<?php echo the_title(); ?>">
 				<?php echo '<source src="//jessetrippe-cdn-173419.appspot.com/flex-zone/videos/' . $post->post_name . '.mp4" type="video/mp4">'; ?>
 			</video>
 			<h2 class="video-title"><?php echo the_title(); ?></h2>
@@ -23,9 +23,21 @@
 			<span class="font-weight-bold">Weight</span>
 			<span class="ml-auto text-link" data-settings-type="weight" data-display-value data-post-id="<?php the_ID(); ?>"></span>
 		</button>
-		<div class="px-3 pb-3 pt-3">
-			<button class="btn btn-block" data-dismiss="modal">Close</button>
+		<div class="p-3" id="exercise-details-close-container-<?php the_ID(); ?>">
+			<button class="btn btn-block btn-secondary" data-dismiss="modal">Close</button>
 		</div>
+		<?php
+			$comments_args = array(
+				'id_form' => 'comment-form-' . $post->ID,
+				'title_reply' => '',
+				'logged_in_as' => '',
+				'comment_field' => '<input type="text" class="text-input is-hidden" name="comment" value="0" id="exercise-input-' . $post->ID . '">',
+				'submit_button' => '<input name="submit" type="submit" id="submit-' . $post->ID . '" class="btn btn-block" value="Save &amp; Close" data-dismiss="modal">',
+				'title_reply_before' => '',
+				'submit_field' => '<div class="p-3 is-hidden" id="submit-container-' . $post->ID . '">%1$s %2$s</div>',
+			);
+			comment_form($comments_args);
+		?>
 	</div>
 	<div class="modal is-hidden" id="modal-settings-<?php echo the_ID(); ?>">
 		<div class="modal-header d-flex">
@@ -36,23 +48,5 @@
 		<div class="modal-body" id="modal-settings-list-<?php echo the_ID(); ?>">
 			<div class="webkit-overflow-scroll-bug" id="overflow-scroll-bug-<?php echo the_ID(); ?>"></div>
 		</div>
-	</div>
-	<div class="is-hidden" id="comments-<?php echo the_ID(); ?>">
-		<?php
-			$comments_args = array(
-				'id_submit' => 'submit-' . $post->ID,
-				'id_form' => 'commentform-' . $post->ID,
-				'title_reply' => '',
-				'title_reply_before' => '',
-				'title_reply_after' => '',
-				'logged_in_as' => '',
-				'cancel_reply_after' => '',
-				'cancel_reply_link' => '',
-				'cancel_reply_before' => '',
-				'comment_notes_after' => '',
-				'comment_field' => '<input type="text" name="comment" value="0" id="comment-' . $post->ID . '">',
-			);
-			comment_form($comments_args);
-		?>
 	</div>
 <?php endwhile; ?>
