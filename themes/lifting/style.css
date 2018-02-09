@@ -485,6 +485,13 @@ button.is-set:before,
   filter: grayscale(100%);
 }
 
+.video-container {
+  position: relative;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
 .video-title {
   position: absolute;
   bottom: .25rem;

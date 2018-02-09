@@ -5,8 +5,8 @@
 				<?php echo get_template_part( 'img/icon-x.svg' ); ?>
 			</button>
 		</div>
-		<div class="p-relative video-container">
-			<video muted playsinline loop class="w-100 d-block" poster="//jessetrippe-cdn-173419.appspot.com/flex-zone/poster-images/<?php echo $post->post_name; ?>.jpg" id="video-<?php echo the_ID(); ?>" title="<?php echo the_title(); ?>">
+		<div class="video-container" style="background-image: url(//jessetrippe-cdn-173419.appspot.com/flex-zone/poster-images/<?php echo $post->post_name; ?>.jpg)">
+			<video muted playsinline loop class="w-100 d-block" id="video-<?php echo the_ID(); ?>" title="<?php echo the_title(); ?>">
 				<?php echo '<source src="//jessetrippe-cdn-173419.appspot.com/flex-zone/videos/' . $post->post_name . '.mp4" type="video/mp4">'; ?>
 			</video>
 			<h2 class="video-title"><?php echo the_title(); ?></h2>
