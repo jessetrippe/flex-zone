@@ -223,3 +223,5 @@ function members_only() {
     }
 }
 add_action( 'wp', 'members_only' );
+
+add_filter( 'cancel_comment_reply_link', '__return_false' );

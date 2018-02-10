@@ -77,13 +77,14 @@ jQuery(document).on("click", "[id^='settings-sets-'], [id^='settings-reps-'], [i
 
     setOptionsOverlay.removeClass("is-hidden").addClass("is-shown");
     setOptionsList.find("button").remove();
+    jQuery("#modal-settings-title-" + postId).html(settingsType);
     jQuery("#overflow-scroll-bug-" + postId).addClass("is-hidden");
 
     if (settingsType == "weight") {
 
         var item = 0;
         while (item <= 300) {
-            setOptionsList.append("<button class='p-3 w-100 border-bottom border-silver' id='settings-set-" + item + "' data-dismiss='modal' data-corresponding-post-id='" + postId + "' data-settings-type=" + settingsType + ">" + item + "</button>");
+            setOptionsList.append("<button class='p-3 w-100 border-bottom border-silver text-link' id='settings-set-" + item + "' data-dismiss='modal' data-corresponding-post-id='" + postId + "' data-settings-type=" + settingsType + ">" + item + "</button>");
 
             if (item == currentSetting) {
                 setOptionsList.find("[data-settings-type]").last().addClass("is-set");
@@ -98,7 +99,7 @@ jQuery(document).on("click", "[id^='settings-sets-'], [id^='settings-reps-'], [i
     } else {
         var item = 0;
         while (item <= 20) {
-            setOptionsList.append("<button class='p-3 w-100 border-bottom border-silver' id='settings-set-" + item + "' data-dismiss='modal' data-corresponding-post-id='" + postId + "' data-settings-type=" + settingsType + ">" + item + "</button>");
+            setOptionsList.append("<button class='p-3 w-100 border-bottom border-silver  text-link' id='settings-set-" + item + "' data-dismiss='modal' data-corresponding-post-id='" + postId + "' data-settings-type=" + settingsType + ">" + item + "</button>");
 
             if (item == currentSetting) {
                 setOptionsList.find("[data-settings-type]").last().addClass("is-set");

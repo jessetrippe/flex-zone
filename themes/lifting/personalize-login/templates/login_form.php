@@ -12,22 +12,20 @@
 		<?php endforeach; ?>
 	<?php endif; ?>
 
-	<p class="mb-3">
-		<?php
-			if ( $attributes['logged_out'] ) {
-				echo 'You have signed out. Would you like to sign in again?';
-			}
-			if ( $attributes['registered'] ) {
-				echo 'You have registered successfully. Sign in below.';
-			}
-			if ( $attributes['lost_password_sent'] ) {
-				echo 'Check your email for a link to reset your password.';
-			}
-			if ( $attributes['password_updated'] ) {
-				echo 'Your password has been changed. You can sign in now.';
-			}
-		?>
-	</p>
+	<?php
+		if ( $attributes['logged_out'] ) {
+			echo '<p class="mb-3">You have signed out. Would you like to sign in again?</p>';
+		}
+		if ( $attributes['registered'] ) {
+			echo '<p class="mb-3">You have registered successfully. Sign in below.</p>';
+		}
+		if ( $attributes['lost_password_sent'] ) {
+			echo '<p class="mb-3">Check your email for a link to reset your password.</p>';
+		}
+		if ( $attributes['password_updated'] ) {
+			echo '<p class="mb-3">Your password has been changed. You can sign in now.</p>';
+		}
+	?>
 
 	<form method="post" action="<?php echo wp_login_url(); ?>" class="">
 		<p class="mb-2">

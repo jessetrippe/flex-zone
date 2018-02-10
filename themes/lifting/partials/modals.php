@@ -9,7 +9,7 @@
 			<video muted playsinline loop class="w-100 d-block" id="video-<?php echo the_ID(); ?>" title="<?php echo the_title(); ?>">
 				<?php echo '<source src="//jessetrippe-cdn-173419.appspot.com/flex-zone/videos/' . $post->post_name . '.mp4" type="video/mp4">'; ?>
 			</video>
-			<h2 class="video-title"><?php echo the_title(); ?></h2>
+			<h2 class="h2 video-title"><?php echo the_title(); ?></h2>
 		</div>
 		<button class="d-flex p-3 border-bottom" id="settings-sets-<?php echo the_ID(); ?>" data-toggle="modal" data-target="#modal-settings-<?php echo the_ID(); ?>" data-settings-type="sets">
 			<span class="font-weight-bold">Sets</span>
@@ -40,10 +40,11 @@
 		?>
 	</div>
 	<div class="modal is-hidden" id="modal-settings-<?php echo the_ID(); ?>">
-		<div class="modal-header d-flex">
+		<div class="modal-header d-flex flex-column">
 			<button class="ml-auto p-3" data-dismiss="modal">
 				<?php echo get_template_part( 'img/icon-x.svg' ); ?>
 			</button>
+			<h1 class="text-white h1 px-3 pb-1 text-capitalize">Set <span id="modal-settings-title-<?php echo the_ID(); ?>"></span></h1>
 		</div>
 		<div class="modal-body" id="modal-settings-list-<?php echo the_ID(); ?>">
 			<div class="webkit-overflow-scroll-bug" id="overflow-scroll-bug-<?php echo the_ID(); ?>"></div>
