@@ -117,10 +117,15 @@ body {
 
 .site-header,
 .modal-header {
-  background-image: url(/wp-content/themes/lifting/img/circles-bg.svg);
-  background-repeat: no-repeat;
-  background-size: 100% auto;
-  background-position: center top;
+  background-color: #3F4F9C;
+  background-image:
+    radial-gradient(
+      circle at left,
+      #4658AE,
+      #4658AE 70%,
+      #3F4F9C 70%,
+      #3F4F9C
+  );
   box-shadow: inset 0 -.5rem .5rem 0 rgba(0,0,0,.1);
   text-shadow: 1px 1px 2px rgba(0,0,0,.25);
 }
