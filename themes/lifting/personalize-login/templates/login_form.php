@@ -34,8 +34,9 @@
 		<p class="mb-3">
 			<input class="text-input" type="password" name="pwd" id="user_pass" placeholder="Password">
 		</p>
-		<p class="mb-3">
-			<label><input name="rememberme" type="checkbox" id="rememberme" value="forever"> Remember Me</label>
+		<p class="custom-control custom-checkbox mb-3">
+			<input name="rememberme" type="checkbox" id="rememberme" value="forever" class="custom-control-input">
+			<label class="custom-control-label" for="rememberme">Remember Me</label>
 		</p>
 		<p class="mb-5">
 			<input class="btn btn-block" type="submit" name="wp-submit" id="wp-submit" value="Sign in">
