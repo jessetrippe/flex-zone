@@ -37,7 +37,7 @@ jQuery(document).on("click", "[data-dismiss]", function () {
         jQuery(this).addClass("is-hidden");
     });
     if (!jQuery(".modal.is-shown").length) {
-        jQuery("body").css("overflow-y","visible");
+        jQuery("body, html").css("overflow-y","visible");
     }
 });
 
@@ -46,7 +46,7 @@ jQuery(document).on("click", "[data-toggle]", function () {
 
     var targetOverlay = jQuery(jQuery(this).data("target"));
     targetOverlay.removeClass("is-hidden").addClass("is-shown");
-    jQuery("body").css("overflow-y","hidden");
+    jQuery("body, html").css("overflow-y","hidden");
 });
 
 jQuery(document).on("click", "[id^='post-']", function () {
