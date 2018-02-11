@@ -1,4 +1,4 @@
-<svg class="d-block mx-auto w-60 my-6" xmlns="http://www.w3.org/2000/svg" width="489" viewBox="0 0 489 521">
+<svg class="d-block mx-auto w-60 my-5" xmlns="http://www.w3.org/2000/svg" width="489" viewBox="0 0 489 521">
     <polygon fill="#00B09B" points="97 87 47 87 38 145 7 145 30 0 116 0 112 27 57 27 52 60 102 60"/>
     <polygon fill="#00B09B" points="155 118 209 118 205 145 120 145 143 0 174 0"/>
     <polygon fill="#00B09B" points="323 83 275 83 269 118 326 118 322 145 234 145 257 0 345 0 341 27 283 27 279 58 327 58"/>
