@@ -23,21 +23,27 @@
 			<span class="font-weight-bold">Weight</span>
 			<span class="ml-auto text-link" data-settings-type="weight" data-display-value data-post-id="<?php the_ID(); ?>"></span>
 		</button>
-		<div class="p-3" id="exercise-details-close-container-<?php the_ID(); ?>">
-			<button class="btn btn-block btn-secondary" data-dismiss="modal">Close</button>
+		<div class="p-3">
+			<button id="exercise-details-close-button-<?php the_ID(); ?>" class="btn btn-block btn-secondary" data-dismiss="modal" data-unsaved="false"><span class="is-hidden" id="save-and-close-wording-<?php the_ID(); ?>">Save&nbsp;&amp;&nbsp;</span>Close</button>
 		</div>
-		<?php
-			$comments_args = array(
-				'id_form' => 'comment-form-' . $post->ID,
-				'title_reply' => '',
-				'logged_in_as' => '',
-				'comment_field' => '<input type="text" class="text-input is-hidden" name="comment" value="0" id="exercise-input-' . $post->ID . '">',
-				'submit_button' => '<input name="submit" type="submit" id="submit-' . $post->ID . '" class="btn btn-block" value="Save &amp; Close" data-dismiss="modal">',
-				'title_reply_before' => '',
-				'submit_field' => '<div class="p-3 is-hidden" id="submit-container-' . $post->ID . '">%1$s %2$s</div>',
-			);
-			comment_form($comments_args);
-		?>
+		<div class="is-hidden">
+			<?php
+				$comments_args = array(
+					'cancel_reply_link' => '',
+					'id_form' => 'comment-form-' . $post->ID,
+					'title_reply' => '',
+					'title_reply_to'    => '',
+					'logged_in_as' => '',
+					'comment_field' => '<input type="text" name="comment" value="0" id="exercise-input-' . $post->ID . '">',
+					'id_submit' => 'submit-' . $post->ID,
+					'title_reply_before' => '',
+					'title_reply_after' => '',
+					'cancel_reply_before' => '',
+					'cancel_reply_after' => '',
+				);
+				comment_form($comments_args);
+			?>
+		</div>
 	</div>
 	<div class="modal is-hidden" id="modal-settings-<?php echo the_ID(); ?>">
 		<div class="modal-header d-flex flex-column">

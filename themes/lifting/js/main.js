@@ -28,6 +28,11 @@ jQuery( document ).on('turbolinks:load', function() {
     });
 });
 
+jQuery(document).on("click", "[data-unsaved='true']", function () {
+    var postId = jQuery(this).attr('id').replace(/exercise-details-close-button-/, '');
+    jQuery("#submit-" + postId).trigger( "click" );
+});
+
 jQuery(document).on("click", "[data-dismiss]", function () {
     "use strict";
 
@@ -120,9 +125,6 @@ jQuery(document).on("click", "[id^='settings-set-']", function () {
     var postId = jQuery(this).attr("data-corresponding-post-id");
     var settingsType = jQuery(this).attr("data-settings-type");
 
-    jQuery("#submit-container-" + postId).removeClass("is-hidden");
-    jQuery("#exercise-details-close-container-" + postId).addClass("is-hidden");
-
     jQuery("[data-settings-type='" + settingsType + "'][data-display-value][data-post-id='" + postId + "']").text(jQuery(this).text());
 
     var setSets = jQuery("[data-settings-type='sets'][data-display-value][data-post-id='" + postId + "']").html();
@@ -139,4 +141,8 @@ jQuery(document).on("click", "[id^='settings-set-']", function () {
         jQuery("#overflow-scroll-bug-" + postId).removeClass("is-hidden");
         jQuery("#modal-settings-list-" + postId).find("[id^='settings-set-']").remove();
     }, 250);
+
+    jQuery("#save-and-close-wording-" + postId).removeClass("is-hidden");
+    jQuery("#exercise-details-close-button-" + postId).attr("data-unsaved",true);
+
 });
