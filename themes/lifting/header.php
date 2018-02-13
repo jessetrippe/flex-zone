@@ -19,13 +19,6 @@
 	<link href="http://cdn.madebyjesse.com/lifting-assets/ios-pwa-assets/apple-touch-icon-114x114.png" sizes="114x114" rel="apple-touch-icon">
 	<link href="http://cdn.madebyjesse.com/lifting-assets/ios-pwa-assets/apple-touch-icon-144x144.png" sizes="144x144" rel="apple-touch-icon">
 
-	<!-- iPhone Splash Screens -->
-	<link href="http://cdn.madebyjesse.com/lifting-assets/ios-pwa-assets/apple-touch-startup-image-320x460.png" media="(device-width: 320px) and (orientation: portrait)" rel="apple-touch-startup-image">
-	<link href="http://cdn.madebyjesse.com/lifting-assets/ios-pwa-assets/apple-touch-startup-image-640x1136.png" media="(device-width: 640px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
-	<link href="http://cdn.madebyjesse.com/lifting-assets/ios-pwa-assets/apple-touch-startup-image-750x1334.png" media="(device-width: 750px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
-	<link href="http://cdn.madebyjesse.com/lifting-assets/ios-pwa-assets/apple-touch-startup-image-1125x2436.png" media="(device-width: 1125px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
-	<link href="http://cdn.madebyjesse.com/lifting-assets/ios-pwa-assets/apple-touch-startup-image-1242x2208.png" media="(device-width: 1242px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
-
 	<?php wp_head(); ?>
 </head>
 
@@ -37,15 +30,13 @@
 				<?php
 					if ( is_front_page() ) {
 						echo '<a class="p-3 mr-auto" href="/sign-out/" title="Sign out">';
-							echo get_template_part( 'img/icon-user.svg' );
-						echo '</a>';
+							echo get_template_part( 'img/icon-user.svg' ) . '</a>';
 					} elseif (is_tax()) {
-						echo '<a class="p-3" href="/" title="Home">';
+						echo '<a class="p-3 mr-auto" href="/" title="Home">';
 						echo get_template_part( 'img/icon-arrow-left.svg' ) . '</a>';
 					} elseif (is_page('sign-out')) {
 						echo '<a class="p-3 ml-auto" href="/" title="Home">';
-						echo get_template_part( 'img/icon-arrow-right.svg' );
-						echo '</a>';
+						echo get_template_part( 'img/icon-arrow-right.svg' ) . '</a>';
 					}
 				?>
 			</nav>
