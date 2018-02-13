@@ -8,18 +8,24 @@ get_header();
 if ( is_front_page() || is_tax() ) {
 
 	$taxonomy_name = 'week';
-	$term_id = get_queried_object()->term_id;
 
-	$terms = get_terms($taxonomy_name, array('parent' => $term_id, 'orderby' => 'id',) );
-	if ($terms) {
-		echo '<div class="mt-3 bg-white">';
-		foreach($terms as $term){
-			echo '<a class="d-flex p-3 h5 border-bottom align-items-center" href="' . get_term_link($term) . '">';
-			echo $term->name;
-			echo get_template_part( 'img/icon-arrow-right-alt.svg' );
-			echo '</a>';
+	if ( is_front_page()) {
+		$terms = get_terms($taxonomy_name, array('parent' => 0, 'orderby' => 'id',) );
+
+		foreach($terms as $term) {
+			echo '<h2 class="h6 mx-3 mt-3 mb-1 text-muted text-uppercase">' . $term->name . '</h2>';
+
+			$terms = get_terms($taxonomy_name, array('parent' => $term->term_id, 'orderby' => 'id',) );
+
+			echo '<div class="bg-white">';
+			foreach($terms as $term) {
+				echo '<a class="d-flex p-3 h6 border-bottom align-items-center" href="' . get_term_link($term) . '">';
+				echo $term->name;
+				echo get_template_part( 'img/icon-chevron-right.svg' );
+				echo '</a>';
+			}
+			echo '</div>';
 		}
-		echo '</div>';
 	} else {
 		get_template_part( 'partials/list' );
 		get_template_part( 'partials/modals' );

@@ -40,18 +40,10 @@
 							echo get_template_part( 'img/icon-user.svg' );
 						echo '</a>';
 					} elseif (is_tax()) {
-						$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
-						$parent = get_term_by( 'id', $term->parent, 'week' );
-						echo '<a class="p-3" href="';
-							if ($parent) :
-								echo get_term_link($parent->slug, 'week') . '" title="' . $parent->name . '">';
-							else :
-								echo bloginfo(url) . '" title="Home">';
-							endif;
+						echo '<a class="p-3" href="/" title="Home">';
 						echo get_template_part( 'img/icon-arrow-left.svg' ) . '</a>';
 					} elseif (is_page('sign-out')) {
-						echo '<a class="p-3 ml-auto" href="';
-						echo bloginfo(url) . '" title="Home">';
+						echo '<a class="p-3 ml-auto" href="/" title="Home">';
 						echo get_template_part( 'img/icon-arrow-right.svg' );
 						echo '</a>';
 					}
@@ -63,6 +55,10 @@
 						if( is_front_page() ) {
 							echo 'Welcome';
 						} elseif (is_tax()) {
+							$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
+							$parent = get_term_by( 'id', $term->parent, get_query_var( 'taxonomy' ) );
+							echo $parent->name;
+							echo ' > ';
 							echo $term->name;
 						}
 						echo '</h1>';
