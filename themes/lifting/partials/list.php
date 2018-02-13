@@ -3,17 +3,17 @@
 	<tbody>
 		<?php while ( have_posts() ) : the_post(); ?>
 			<tr <?php post_class(); ?> id="post-<?php echo the_ID(); ?>"  data-toggle="modal" data-target="#modal-exercise-<?php echo get_the_ID() ?>">
-				<td class="w-1">
-					<?php echo '<img alt="' . $post->post_title . '" height="90" width="90" class="d-block" src="//jessetrippe-cdn-173419.appspot.com/flex-zone/poster-images/' . $post->post_name . '.jpg">'; ?>
+				<td class="w-1 py-2 px-3">
+					<?php echo '<img alt="' . $post->post_title . '" height="75" width="75" class="d-block rounded" src="//jessetrippe-cdn-173419.appspot.com/flex-zone/poster-images/' . $post->post_name . '.jpg">'; ?>
 				</td>
-				<td class="border-top px-3">
+				<td class="border-bottom">
 					<div class="font-weight-bold"><?php the_title(); ?></div>
 					<div class="text-muted small">
 						<span data-settings-type="sets" data-display-value data-post-id="<?php the_ID(); ?>">0</span> sets of
 						<span data-settings-type="reps" data-display-value data-post-id="<?php the_ID(); ?>">0</span> reps
 					</div>
 				</td>
-				<td class="border-top pr-3 text-right text-link">
+				<td class="border-bottom px-3 text-right text-link">
 					<span class="" data-settings-type="weight" data-display-value data-post-id="<?php the_ID(); ?>">0</span>&nbsp;lbs
 					<span id="settings-<?php echo get_the_ID() ?>" class="is-hidden">
 						<?php
