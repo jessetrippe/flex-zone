@@ -39,16 +39,26 @@ remove_action('wp_head', 'wp_resource_hints', 2); // remove DNS pre-fetch
  * Enqueue scripts and styles.
  */
 function scripts() {
+
+define ('VERSION', '1.1');
+
+function version_id() {
+  if ( WP_DEBUG )
+    return time();
+  return VERSION;
+}
+
+
     /**
      * Production styles and scripts.
      */
     wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i', false, false, 'screen' );
-    wp_enqueue_style( 'lifting-style', get_template_directory_uri() . '/style.css', false, false, 'screen' );
-    wp_enqueue_script( 'turbolinks', get_stylesheet_directory_uri() . '/js/turbolinks.js', false, false, false );
+    wp_enqueue_style( 'lifting-style', get_template_directory_uri() . '/style.css', false, version_id(), 'screen' );
+    wp_enqueue_script( 'turbolinks', get_stylesheet_directory_uri() . '/js/turbolinks.js', false, version_id(), false );
     wp_deregister_script( 'jquery' );
-    wp_register_script( 'jquery', includes_url( '/js/jquery/jquery.js' ), false, false, true );
-    wp_enqueue_script( 'form', get_stylesheet_directory_uri() . '/js/jquery.form.js', array('jquery'), false, true );
-    wp_enqueue_script( 'main', get_stylesheet_directory_uri() . '/js/main.js', array('jquery'), false, true );
+    wp_register_script( 'jquery', includes_url( '/js/jquery/jquery.js' ), false, version_id(), true );
+    wp_enqueue_script( 'form', get_stylesheet_directory_uri() . '/js/jquery.form.js', array('jquery'), version_id(), true );
+    wp_enqueue_script( 'main', get_stylesheet_directory_uri() . '/js/main.js', array('jquery'), version_id(), true );
 }
 add_action( 'wp_enqueue_scripts', 'scripts' );
 
