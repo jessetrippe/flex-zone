@@ -24,7 +24,7 @@
 								'post_id' => get_the_ID(),
 							);
 							$comments = get_comments( $args );
-							if ( !empty( $comments ) ) : foreach( $comments as $comment ) : echo $comment->comment_content; endforeach; else : echo '0'; endif;
+							if ( !empty( $comments ) ) : foreach( $comments as $comment ) : echo $comment->comment_content; endforeach; else : echo '0×0×0'; endif;
 						?>
 					</span>
 				</td>

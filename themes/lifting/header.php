@@ -42,17 +42,17 @@
 			</nav>
 				<?php
 					if (!is_page('sign-out')) {
-						echo '<h1 class="text-white h1 px-3 pb-1 mt-4">';
 						if( is_front_page() ) {
-							echo 'Welcome';
+							echo '<h1 class="text-white h1 px-3 pb-1 mt-4">Welcome</h1>';
 						} elseif (is_tax()) {
 							$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
 							$parent = get_term_by( 'id', $term->parent, get_query_var( 'taxonomy' ) );
-							echo $parent->name;
-							echo ' > ';
-							echo $term->name;
+							echo '<h1 class="text-white h4 px-3 pb-1 mt-4">';
+							echo $parent->name . '<span class="p-2">';
+							echo get_template_part('img/icon-chevron-right-alt.svg');
+							echo '</span>' . $term->name;
+							echo '</h1>';
 						}
-						echo '</h1>';
 					}
 				?>
 		</header><!-- #masthead -->

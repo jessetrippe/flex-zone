@@ -9,8 +9,8 @@
 
 </main>
 
-<footer class="site-footer text-center pt-4 pb-3 px-2">
-	<p class="m-0 small text-muted">Copyright &copy; <?php echo date("Y"); ?> Jesse Trippe. All rights reserved.</p>
+<footer class="site-footer text-center p-3 small text-muted">
+	<p>Copyright &copy; <?php echo date("Y"); ?> Jesse Trippe. All rights reserved.</p>
 </footer>
 
 <?php wp_footer(); ?>

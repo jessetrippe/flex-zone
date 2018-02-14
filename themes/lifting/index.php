@@ -19,8 +19,7 @@ if ( is_front_page() || is_tax() ) {
 
 			echo '<div class="bg-white">';
 			foreach($terms as $term) {
-				echo '<a class="d-flex p-3 h6 border-bottom align-items-center" href="' . get_term_link($term) . '">';
-				echo $term->name;
+				echo '<a class="d-flex p-3 h6 border-bottom align-items-center" href="' . get_term_link($term) . '">' . $term->name;
 				echo get_template_part( 'img/icon-chevron-right.svg' ) . '</a>';
 			}
 			echo '</div>';
