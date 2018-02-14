@@ -47,10 +47,9 @@
 						} elseif (is_tax()) {
 							$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
 							$parent = get_term_by( 'id', $term->parent, get_query_var( 'taxonomy' ) );
-							echo '<h1 class="text-white h4 px-3 pb-1 mt-4">';
-							echo $parent->name . '<span class="p-2">';
-							echo get_template_part('img/icon-chevron-right-alt.svg');
-							echo '</span>' . $term->name;
+							echo '<h1 class="h6 px-3 mt-3 small">';
+							echo $parent->name;
+							echo '</h1><h1 class="h2 px-3 pb-1">' . $term->name;
 							echo '</h1>';
 						}
 					}
